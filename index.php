@@ -3,17 +3,17 @@
 <head>
 <?php
 $page_title = 'Pim Willems';
-include 'partials/head.php';
+include 'head.php';
 ?>
   <style>
     html, body { height: 100%; }
 
     .page {
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       padding: 28px 34px 22px;
-      overflow: hidden;
+      overflow: auto;
     }
 
     .main {
@@ -74,10 +74,72 @@ include 'partials/head.php';
       justify-content: space-between;
       font-weight: 600;
       font-size: 15px;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
     .footer-bar a { color: inherit; text-decoration: none; }
     .footer-arrow { font-size: 18px; color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .page {
+        padding: 20px 20px 16px;
+      }
+      
+      .main {
+        flex-direction: column;
+        gap: 24px;
+        padding-top: 20px;
+      }
+
+      .left {
+        width: 100%;
+      }
+
+      .name {
+        font-size: 64px;
+      }
+
+      .blurb {
+        font-size: 18px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        padding: 16px 16px 12px;
+      }
+
+      .main {
+        gap: 16px;
+        padding-top: 16px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .name {
+        font-size: 48px;
+        margin: auto 0 -8px;
+      }
+
+      .blurb {
+        font-size: 16px;
+      }
+
+      .footer-bar {
+        font-size: 13px;
+        gap: 8px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -86,7 +148,8 @@ include 'partials/head.php';
     <?php
     $nav_back_href  = 'work.php';
     $nav_back_label = 'work&nbsp;→';
-    include 'partials/nav.php';
+    $contact_href   = 'https://www.linkedin.com/in/pimwillems-frontend-developer/';
+    include 'nav.php';
     ?>
 
     <div class="main">
@@ -125,5 +188,31 @@ include 'partials/head.php';
     </footer>
 
   </main>
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    const sunIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2.5M12 19.5V22M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M2 12h2.5M19.5 12H22M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77"></path></svg>';
+    const moonIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 9 9 0 1 0 20 14.5z"></path></svg>';
+    
+    function updateIcon() {
+      toggle.innerHTML = html.classList.contains('dark') ? sunIcon : moonIcon;
+    }
+    
+    function switchTheme() {
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        html.classList.add('light');
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.remove('light');
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+      updateIcon();
+    }
+    
+    toggle.addEventListener('click', switchTheme);
+    updateIcon();
+  </script>
 </body>
 </html>

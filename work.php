@@ -50,12 +50,14 @@ $page_title = 'Work — Pim Willems';
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<?php include 'partials/head.php'; ?>
+<?php include 'head.php'; ?>
   <style>
     .page {
       max-width: 1280px;
       margin: 0 auto;
       padding: 28px 34px 64px;
+      display: flex;
+      flex-direction: column;
     }
 
     .masthead {
@@ -66,6 +68,7 @@ $page_title = 'Work — Pim Willems';
       opacity: 0;
       transform: translateY(24px);
       transition: opacity 0.55s ease, transform 0.55s ease;
+      gap: 20px;
     }
 
     .masthead.is-visible { opacity: 1; transform: none; }
@@ -107,6 +110,7 @@ $page_title = 'Work — Pim Willems';
       letter-spacing: 0.08em;
       color: var(--filter-label);
       margin-right: 6px;
+      flex-shrink: 0;
     }
 
     .filt {
@@ -122,6 +126,7 @@ $page_title = 'Work — Pim Willems';
       background: transparent;
       cursor: pointer;
       transition: border-color .15s;
+      white-space: nowrap;
     }
 
     .filt:hover { border-color: var(--ink); }
@@ -207,10 +212,130 @@ $page_title = 'Work — Pim Willems';
       justify-content: space-between;
       font-weight: 600;
       font-size: 15px;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
     .site-footer a { color: var(--ink); text-decoration: none; }
     .site-footer .arrow { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .page {
+        padding: 20px 20px 40px;
+      }
+
+      .masthead {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .masthead h1 {
+        font-size: 64px;
+      }
+
+      .masthead p {
+        width: 100%;
+        font-size: 14px;
+      }
+
+      .projects {
+        gap: 80px;
+        margin-top: 60px;
+      }
+
+      .project-header {
+        flex-direction: column;
+      }
+
+      .project-title {
+        font-size: 36px;
+      }
+
+      .project-meta {
+        width: 100%;
+      }
+
+      .filter-bar {
+        margin-top: 24px;
+        padding-bottom: 20px;
+      }
+
+      .site-footer {
+        margin-top: 80px;
+        padding-top: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        padding: 16px 16px 32px;
+      }
+
+      .masthead {
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      .masthead h1 {
+        font-size: 48px;
+      }
+
+      .masthead p {
+        font-size: 13px;
+      }
+
+      .projects {
+        gap: 60px;
+        margin-top: 40px;
+      }
+
+      .project-header {
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .project-title {
+        font-size: 28px;
+      }
+
+      .project-num {
+        font-size: 11px;
+      }
+
+      .project-desc {
+        font-size: 14px;
+      }
+
+      .tag {
+        font-size: 10px;
+        padding: 4px 9px;
+      }
+
+      .filter-bar {
+        margin-top: 18px;
+        padding-bottom: 16px;
+        gap: 6px;
+      }
+
+      .filter-label {
+        font-size: 11px;
+      }
+
+      .filt {
+        font-size: 11px;
+        padding: 6px 12px;
+      }
+
+      .site-footer {
+        margin-top: 60px;
+        padding-top: 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .site-footer a { display: block; }
+    }
   </style>
 </head>
 <body>
@@ -219,7 +344,8 @@ $page_title = 'Work — Pim Willems';
     <?php
     $nav_back_href  = 'index.php';
     $nav_back_label = '←&nbsp;home';
-    include 'partials/nav.php';
+    $contact_href   = 'https://www.linkedin.com/in/pimwillems-frontend-developer/';
+    include 'nav.php';
     ?>
 
     <div class="masthead">
@@ -363,6 +489,33 @@ $page_title = 'Work — Pim Willems';
 
       setTimeout(() => reveals.forEach(show), 2500);
     })();
+  </script>
+
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    const sunIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2.5M12 19.5V22M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M2 12h2.5M19.5 12H22M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77"></path></svg>';
+    const moonIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 9 9 0 1 0 20 14.5z"></path></svg>';
+    
+    function updateIcon() {
+      toggle.innerHTML = html.classList.contains('dark') ? sunIcon : moonIcon;
+    }
+    
+    function switchTheme() {
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        html.classList.add('light');
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.remove('light');
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+      updateIcon();
+    }
+    
+    toggle.addEventListener('click', switchTheme);
+    updateIcon();
   </script>
 </body>
 </html>

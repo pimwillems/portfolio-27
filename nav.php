@@ -11,5 +11,8 @@ $contact_href ??= '#';
 ?>
 <nav class="nav">
   <a href="<?= htmlspecialchars($nav_back_href) ?>" class="nav-link"><?= $nav_back_label ?></a>
-  <a href="<?= htmlspecialchars($contact_href) ?>" class="nav-contact">contact&nbsp;→</a>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" type="button"></button>
+    <a href="<?= htmlspecialchars($contact_href) ?>" class="nav-contact" target="_blank" rel="noopener noreferrer">LinkedIn&nbsp;→</a>
+  </div>
 </nav>
