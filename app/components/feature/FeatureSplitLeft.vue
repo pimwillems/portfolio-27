@@ -29,7 +29,7 @@
     <EditorialFigure
       class="main"
       v-bind="figures[0]"
-      :span="6"
+      :span="5"
     />
     <EditorialFigure
       class="small-a"
@@ -93,7 +93,7 @@ export default defineNuxtComponent({
 }
 
 .main {
-  grid-column: 7 / span 6;
+  grid-column: 8 / span 5;
 }
 
 .small-a {

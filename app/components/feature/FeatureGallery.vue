@@ -20,17 +20,17 @@
     <EditorialFigure
       class="left"
       v-bind="figures[0]"
-      :span="3"
+      :span="4"
     />
     <EditorialFigure
       class="center"
       v-bind="figures[1]"
-      :span="5"
+      :span="8"
     />
     <EditorialFigure
       class="right"
       v-bind="figures[2]"
-      :span="2"
+      :span="3"
     />
     <FeatureText
       class="text"
@@ -43,7 +43,7 @@
 import type { PropType } from 'vue'
 import type { FigureData, Project } from '~/data/issue'
 
-/** 05 — drifting title and a staggered row of three figures. */
+/** 04 — drifting title, a small figure beside a wide one, then text and a second small figure. */
 export default defineNuxtComponent({
   name: 'FeatureGallery',
   props: {
@@ -78,21 +78,25 @@ export default defineNuxtComponent({
 }
 
 .left {
-  grid-column: 1 / span 3;
-  margin-top: calc(220px * var(--space-scale));
+  grid-column: 1 / span 4;
+  grid-row: 3;
+  margin-top: calc(280px * var(--space-scale));
 }
 
 .center {
-  grid-column: 5 / span 5;
+  grid-column: 5 / span 8;
+  grid-row: 3;
 }
 
 .right {
-  grid-column: 11 / span 2;
-  margin-top: calc(480px * var(--space-scale));
+  grid-column: 10 / span 3;
+  grid-row: 4;
+  margin-top: calc(200px * var(--space-scale));
 }
 
 .text {
   grid-column: 5 / span 4;
+  grid-row: 4;
   margin-top: calc(100px * var(--space-scale));
 }
 
@@ -103,6 +107,14 @@ export default defineNuxtComponent({
   }
 
   .title { margin-bottom: 8px; }
+
+  .left,
+  .center,
+  .right,
+  .text {
+    grid-row: auto;
+  }
+
   .center { grid-column: 1 / -1; order: 1; }
   .text { grid-column: 1 / span 4; order: 2; margin-top: 0; }
   .left { grid-column: 1 / span 3; order: 3; margin-top: 0; }

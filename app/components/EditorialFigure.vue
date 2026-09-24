@@ -11,29 +11,22 @@
       :role="src ? undefined : 'img'"
       :aria-label="src ? undefined : alt"
     >
-      <div class="zoom">
-        <div
-          class="inner"
-          :class="{ 'm-parallax': parallax }"
-        >
-          <NuxtImg
-            v-if="src"
-            class="img"
-            :src="src"
-            :alt="alt"
-            :width="imgWidth"
-            :height="imgHeight"
-            :sizes="imgSizes"
-            densities="x1"
-            format="webp"
-            fit="inside"
-            :loading="priority ? 'eager' : 'lazy'"
-            :fetchpriority="priority ? 'high' : 'auto'"
-            :preload="priority"
-            decoding="async"
-          />
-        </div>
-      </div>
+      <NuxtImg
+        v-if="src"
+        class="img"
+        :src="src"
+        :alt="alt"
+        :width="imgWidth"
+        :height="imgHeight"
+        :sizes="imgSizes"
+        densities="x1"
+        format="webp"
+        fit="inside"
+        :loading="priority ? 'eager' : 'lazy'"
+        :fetchpriority="priority ? 'high' : 'auto'"
+        :preload="priority"
+        decoding="async"
+      />
       <div
         class="veil"
         aria-hidden="true"
@@ -91,8 +84,8 @@ function unobserveCenter(el: Element) {
 }
 
 /**
- * The core editorial image: a fixed-height grayscale frame with parallax,
- * hover zoom + veil, scroll reveal and a tone placeholder while `src` is null.
+ * The core editorial image: a grayscale frame at the image's own aspect
+ * ratio (never cropped), hover veil, scroll reveal and a tone placeholder while `src` is null.
  * It turns to colour on hover and while it sits in the vertical centre of the viewport.
  */
 export default defineNuxtComponent({
@@ -100,10 +93,11 @@ export default defineNuxtComponent({
   props: {
     src: { type: String as PropType<string | null>, default: null },
     alt: { type: String, required: true },
+    /** Natural size of the image; the frame keeps this aspect ratio. */
+    width: { type: Number, required: true },
     height: { type: Number, required: true },
     tone: { type: Number as PropType<Tone>, default: 2 },
     reveal: { type: String as PropType<Reveal>, default: 'clip-up' },
-    parallax: { type: Boolean, default: true },
     float: { type: Boolean, default: false },
     radius: { type: Number, default: 0 },
     caption: { type: String, default: '' },
@@ -124,7 +118,7 @@ export default defineNuxtComponent({
     },
     frameStyle(): Record<string, string | number> {
       return {
-        '--h': this.height,
+        aspectRatio: `${this.width} / ${this.height}`,
         'borderRadius': this.radius ? `${this.radius}px` : '0',
       }
     },
@@ -135,9 +129,8 @@ export default defineNuxtComponent({
     imgWidth(): number {
       return Math.round(this.desktopWidth * 1.5)
     },
-    /** The inner layer is 124% of the frame (for parallax travel). */
     imgHeight(): number {
-      return Math.round(this.height * 1.24 * 1.5)
+      return Math.round(this.imgWidth * this.height / this.width)
     },
     /** ~1.5× the rendered width at each breakpoint. */
     imgSizes(): string {
@@ -167,7 +160,7 @@ export default defineNuxtComponent({
 .frame {
   position: relative;
   overflow: hidden;
-  height: max(var(--fig-min), calc(var(--h) * var(--fig-scale)));
+  width: 100%;
   filter: grayscale(1);
   background: var(--tone);
   transition: filter .8s var(--ease-out);
@@ -185,22 +178,11 @@ export default defineNuxtComponent({
 .tone-5 { --tone: var(--c-tone-5); --label: var(--c-paper); }
 .tone-6 { --tone: var(--c-tone-6); --label: var(--c-paper); }
 
-.zoom {
-  position: absolute;
-  inset: 0;
-  transition: transform 1.6s var(--ease-out);
-}
-
-.inner {
-  position: absolute;
-  inset: -12% 0;
-  background: var(--tone);
-}
-
 .img {
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .veil {
@@ -229,10 +211,6 @@ export default defineNuxtComponent({
   bottom: 26px;
 }
 
-.fig:hover .zoom {
-  transform: scale(1.045);
-}
-
 .fig:hover .veil {
   opacity: .06;
 }
@@ -241,11 +219,5 @@ export default defineNuxtComponent({
   display: flex;
   justify-content: space-between;
   gap: 16px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .fig:hover .zoom {
-    transform: none;
-  }
 }
 </style>

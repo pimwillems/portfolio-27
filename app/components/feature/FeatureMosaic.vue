@@ -4,38 +4,35 @@
     class="spread grid-12"
     :aria-labelledby="`${project.id}-title`"
   >
-    <EditorialFigure
-      class="main"
-      v-bind="figures[0]"
-      :span="7"
-    />
-
-    <div class="text-col">
-      <div class="head">
-        <MetaCaption muted>
-          No. {{ project.number }} — {{ project.category }}
-        </MetaCaption>
-        <h3
-          :id="`${project.id}-title`"
-          v-reveal
-          class="title serif m-rise"
-        >
-          <EmText :segments="project.title" />
-        </h3>
-        <MetaCaption v-if="project.client">
-          {{ project.client }}
-        </MetaCaption>
-      </div>
-      <FeatureText
-        class="text"
-        :project="project"
-      />
+    <div class="head">
+      <MetaCaption muted>
+        No. {{ project.number }} — {{ project.category }}
+      </MetaCaption>
+      <h3
+        :id="`${project.id}-title`"
+        v-reveal
+        class="title serif m-rise"
+      >
+        <EmText :segments="project.title" />
+      </h3>
+      <MetaCaption v-if="project.client">
+        {{ project.client }}
+      </MetaCaption>
     </div>
 
     <EditorialFigure
       class="phone"
       v-bind="figures[1]"
       :span="3"
+    />
+    <EditorialFigure
+      class="main"
+      v-bind="figures[0]"
+      :span="8"
+    />
+    <FeatureText
+      class="text"
+      :project="project"
     />
     <EditorialFigure
       class="small"
@@ -49,9 +46,12 @@
 import type { PropType } from 'vue'
 import type { FigureData, Project } from '~/data/issue'
 
-/** 05 — wide figure left, text column right, phone + small figure staggered below. */
+/**
+ * 07 — title across the top, phone beside a wide figure (bottoms aligned),
+ * then text and a small figure. Figure order: wide, phone, small.
+ */
 export default defineNuxtComponent({
-  name: 'FeatureSplitRight',
+  name: 'FeatureMosaic',
   props: {
     project: { type: Object as PropType<Project>, required: true },
   },
@@ -66,70 +66,67 @@ export default defineNuxtComponent({
 <style scoped>
 .spread {
   padding-bottom: var(--section-gap);
-}
-
-.main {
-  grid-column: 1 / span 7;
-  grid-row: 1;
-}
-
-.text-col {
-  grid-column: 9 / span 4;
-  grid-row: 1 / span 2;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  padding-top: calc(160px * var(--space-scale));
+  align-items: end;
 }
 
 .head {
+  grid-column: 1 / span 9;
   display: flex;
   flex-direction: column;
   gap: 32px;
+  padding-bottom: calc(96px * var(--space-scale));
 }
 
 .title {
-  font-size: clamp(56px, 7.8vw, 112px);
+  font-size: clamp(64px, 11vw, 176px);
   line-height: .88;
   letter-spacing: -.02em;
-}
-
-.text {
-  max-width: 360px;
 }
 
 .phone {
   grid-column: 1 / span 3;
   grid-row: 2;
-  margin-top: calc(120px * var(--space-scale));
+}
+
+.main {
+  grid-column: 5 / span 8;
+  grid-row: 2;
+}
+
+.text {
+  grid-column: 5 / span 4;
+  grid-row: 3;
+  align-self: start;
+  padding-top: calc(96px * var(--space-scale));
+  max-width: 380px;
 }
 
 .small {
-  grid-column: 5 / span 3;
-  grid-row: 2;
-  margin-top: calc(280px * var(--space-scale));
+  grid-column: 10 / span 3;
+  grid-row: 3;
+  align-self: start;
+  margin-top: calc(200px * var(--space-scale));
 }
 
 @media (max-width: 1023px) {
   .spread {
     grid-template-columns: repeat(6, minmax(0, 1fr));
     row-gap: 48px;
+    align-items: start;
   }
 
-  .text-col {
-    display: contents;
-  }
-
-  .main,
+  .head,
   .phone,
+  .main,
+  .text,
   .small {
     grid-row: auto;
   }
 
-  .head { grid-column: 1 / -1; order: 1; }
+  .head { grid-column: 1 / -1; order: 1; padding-bottom: 0; }
   .main { grid-column: 1 / -1; order: 2; }
-  .text { grid-column: 1 / span 4; order: 3; max-width: 380px; }
-  .phone { grid-column: 1 / span 3; order: 4; margin-top: 0; }
+  .text { grid-column: 1 / span 4; order: 3; padding-top: 0; }
+  .phone { grid-column: 1 / span 3; order: 4; }
   .small { grid-column: 4 / span 3; order: 5; margin-top: 160px; }
 }
 

@@ -38,7 +38,7 @@
       <EditorialFigure
         class="small"
         v-bind="figures[2]"
-        :span="2"
+        :span="3"
       />
     </div>
   </section>
@@ -92,11 +92,11 @@ export default defineNuxtComponent({
 }
 
 .phone {
-  grid-column: 2 / span 3;
+  grid-column: 1 / span 3;
 }
 
 .text {
-  grid-column: 6 / span 4;
+  grid-column: 5 / span 4;
   padding-top: calc(120px * var(--space-scale));
 }
 
@@ -105,7 +105,7 @@ export default defineNuxtComponent({
 }
 
 .small {
-  grid-column: 11 / span 2;
+  grid-column: 10 / span 3;
   margin-top: calc(360px * var(--space-scale));
 }
 
