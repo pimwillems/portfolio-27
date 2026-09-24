@@ -152,8 +152,8 @@ export const projects: Project[] = [
     tech: ['Vue.js', 'State management', 'Authentication'],
     figures: [
       {
-        src: null,
-        alt: 'Ed Sheeran butterfly hunt — greenhouse landing screen',
+        src: '/images/projects/edsheeran_1.png',
+        alt: 'Ed Sheeran butterfly hunt — the greenhouse screen with butterflies, a locked flower and a countdown timer',
         label: 'edsheeran_1.png',
         height: 900,
         tone: 1,
@@ -162,8 +162,8 @@ export const projects: Project[] = [
         captionArrow: true,
       },
       {
-        src: null,
-        alt: 'Ed Sheeran butterfly hunt — a fan\'s collection of exclusive items',
+        src: '/images/projects/edsheeran_2.png',
+        alt: 'Ed Sheeran butterfly hunt — a fan\'s collection of 12 of 14 butterflies',
         label: 'edsheeran_2.png',
         height: 400,
         tone: 6,
@@ -172,8 +172,8 @@ export const projects: Project[] = [
         caption: 'Collecting',
       },
       {
-        src: null,
-        alt: 'Ed Sheeran butterfly hunt — entering a greenhouse code from another fan',
+        src: '/images/projects/edsheeran_3.png',
+        alt: 'Ed Sheeran butterfly hunt — entering a colour code to add a new flower to the greenhouse',
         label: 'edsheeran_3.png',
         height: 260,
         tone: 3,
@@ -195,7 +195,7 @@ export const projects: Project[] = [
     tech: ['Vue.js', 'Spotify API', 'Localization'],
     figures: [
       {
-        src: null,
+        src: '/images/projects/artistdreamteam1.jpg',
         alt: 'Martin Garrix Artist Dream Team — building a roster on a football pitch',
         label: 'artistdreamteam1.jpg',
         height: 600,
@@ -205,8 +205,8 @@ export const projects: Project[] = [
         captionArrow: true,
       },
       {
-        src: null,
-        alt: 'Martin Garrix Artist Dream Team on an iPhone',
+        src: '/images/projects/artistdreamteam_iphone11pro_1.jpg',
+        alt: 'Martin Garrix Artist Dream Team on two iPhones — the intro and the team pitch',
         label: 'artistdreamteam_iphone11pro_1.jpg',
         height: 560,
         tone: 6,
@@ -215,8 +215,8 @@ export const projects: Project[] = [
         caption: 'On mobile',
       },
       {
-        src: null,
-        alt: 'Martin Garrix Artist Dream Team — choosing a player with a Spotify preview',
+        src: '/images/projects/artistdreamteam2.jpg',
+        alt: 'Martin Garrix Artist Dream Team — landing page with artist cards and Connect with Spotify',
         label: 'artistdreamteam2.jpg',
         height: 240,
         tone: 4,
@@ -238,9 +238,9 @@ export const projects: Project[] = [
     stat: { value: '11', label: ['franchisers.', 'One theme.'] },
     figures: [
       {
-        src: null,
-        alt: 'Ricoh franchise platform — a franchise homepage on desktop',
-        label: 'ricoh_desktop1.png',
+        src: '/images/projects/ricoh_desktop2.png',
+        alt: 'Ricoh franchise platform — the Ricoh Document Center Nijmegen homepage on desktop',
+        label: 'ricoh_desktop2.png',
         height: 700,
         tone: 1,
         reveal: 'clip-center',
@@ -248,9 +248,9 @@ export const projects: Project[] = [
         captionArrow: true,
       },
       {
-        src: null,
-        alt: 'Ricoh franchise platform — content managed per franchise',
-        label: 'ricoh_desktop2.png',
+        src: '/images/projects/ricoh_desktop1.png',
+        alt: 'Ricoh franchise platform — a printer product page managed by the franchise',
+        label: 'ricoh_desktop1.png',
         height: 460,
         tone: 5,
         reveal: 'clip-up',
@@ -258,8 +258,8 @@ export const projects: Project[] = [
         caption: 'Content, per franchise',
       },
       {
-        src: null,
-        alt: 'Ricoh franchise platform — custom forms and WooCommerce shop',
+        src: '/images/projects/ricoh_desktop3.png',
+        alt: 'Ricoh franchise platform — a custom form to find the right printer',
         label: 'ricoh_desktop3.png',
         height: 220,
         tone: 3,
@@ -282,8 +282,8 @@ export const projects: Project[] = [
     tech: ['WordPress', 'Google Maps API', 'Accessibility'],
     figures: [
       {
-        src: null,
-        alt: 'IkStopNu for Trimbos — map of verified quit-smoking coaches nearby',
+        src: '/images/projects/ikstopnu_desktop_1.png',
+        alt: 'IkStopNu for Trimbos — map of verified quit-smoking coaches across the Netherlands',
         label: 'ikstopnu_desktop_1.png',
         height: 760,
         tone: 2,
@@ -292,8 +292,8 @@ export const projects: Project[] = [
         captionArrow: true,
       },
       {
-        src: null,
-        alt: 'IkStopNu coach finder on an iPhone',
+        src: '/images/projects/ikstopnu_iphone11pro.png',
+        alt: 'IkStopNu coach finder on two iPhones — the map and a coach\'s contact details',
         label: 'ikstopnu_iphone11pro.png',
         height: 400,
         tone: 6,
@@ -303,8 +303,8 @@ export const projects: Project[] = [
         caption: 'Mobile',
       },
       {
-        src: null,
-        alt: 'IkStopNu — list of coaching results for a postcode',
+        src: '/images/projects/ikstopnu_desktop_2.png',
+        alt: 'IkStopNu — list of coaching results near Delft next to the map',
         label: 'ikstopnu_desktop_2.png',
         height: 300,
         tone: 1,
@@ -326,8 +326,8 @@ export const projects: Project[] = [
     tech: ['Nuxt', 'Storyblok CMS', 'Static hosting'],
     figures: [
       {
-        src: null,
-        alt: 'RTL Project Glimlach — the opening of a charity story',
+        src: '/images/projects/glimlach-1.png',
+        alt: 'RTL Project Glimlach — the opening of a story about a neonatologist',
         label: 'glimlach-1.png',
         height: 380,
         tone: 3,
@@ -335,9 +335,9 @@ export const projects: Project[] = [
         caption: 'The story opens',
       },
       {
-        src: null,
-        alt: 'RTL Project Glimlach — a story built from storytelling blocks',
-        label: 'glimlach-2.png',
+        src: '/images/projects/glimlach-3.png',
+        alt: 'RTL Project Glimlach — story blocks with portraits and more videos from the campaign',
+        label: 'glimlach-3.png',
         height: 820,
         tone: 2,
         reveal: 'clip-center',
@@ -345,9 +345,9 @@ export const projects: Project[] = [
         captionArrow: true,
       },
       {
-        src: null,
-        alt: 'RTL Project Glimlach — donation call to action',
-        label: 'glimlach-3.png',
+        src: '/images/projects/glimlach-2.png',
+        alt: 'RTL Project Glimlach — campaign homepage with a donation call to action',
+        label: 'glimlach-2.png',
         height: 280,
         tone: 5,
         reveal: 'clip-up',
