@@ -104,7 +104,8 @@ export default defineNuxtComponent({
   overflow: hidden;
   background: var(--c-tone-2);
   opacity: 0;
-  transform: translate(-50%, -50%) scale(.85);
+  transform: translate(24px, 24px) scale(.85);
+  transform-origin: top left;
   transition:
     opacity .5s var(--ease-out),
     transform .7s var(--ease-out);
@@ -112,7 +113,7 @@ export default defineNuxtComponent({
 
 .preview.is-visible .layer.is-active {
   opacity: 1;
-  transform: translate(-50%, -50%);
+  transform: translate(24px, 24px);
 }
 
 .img {
@@ -128,7 +129,7 @@ export default defineNuxtComponent({
 
   .layer,
   .preview.is-visible .layer.is-active {
-    transform: translate(-50%, -50%);
+    transform: translate(24px, 24px);
   }
 }
 </style>
