@@ -485,21 +485,17 @@ export const interlude = {
 export const stack = {
   kicker: 'The wardrobe',
   items: [
-    { text: 'Vue.js' },
+    { text: 'Vue' },
     { text: 'Nuxt', em: true },
-    { text: 'WordPress' },
+    { text: 'Next' },
+    { text: 'WordPress', em: true },
+    { text: 'Go' },
     { text: 'PHP', em: true },
     { text: 'Storyblok' },
-    { text: 'WooCommerce', em: true },
-    { text: 'ACF' },
-    { text: 'Google Maps', em: true },
-    { text: 'Spotify API' },
   ] as Segment[],
 }
 
 export const contact = {
-  kicker: 'Correspondence',
-  headline: [{ text: 'Let\'s ' }, { text: 'talk.', em: true }] as Segment[],
   href: LINKEDIN_URL,
   button: 'LinkedIn',
   copyright: '© 2026 Pim Willems',

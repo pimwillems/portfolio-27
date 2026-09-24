@@ -8,24 +8,6 @@
       class="rule m-line"
       aria-hidden="true"
     />
-    <MetaCaption
-      class="kicker"
-      muted
-    >
-      {{ contact.kicker }}
-    </MetaCaption>
-    <a
-      class="talk serif"
-      :href="contact.href"
-      target="_blank"
-      rel="noopener"
-    >
-      <span
-        v-reveal
-        class="track m-track"
-      ><span class="talk-text"><EmText :segments="contact.headline" /></span></span>
-      <span class="visually-hidden"> (LinkedIn, opens in a new tab)</span>
-    </a>
     <a
       v-reveal
       class="btn cap m-rise"
@@ -80,40 +62,6 @@ export default defineNuxtComponent({
   background: var(--c-line);
 }
 
-.kicker {
-  margin-top: calc(120px * var(--space-scale));
-}
-
-.talk {
-  align-self: flex-start;
-  margin-left: 50%;
-  transform: translateX(-50%);
-  font-size: clamp(56px, 12vw, 192px);
-  line-height: .9;
-  white-space: nowrap;
-}
-
-.talk:hover,
-.talk:focus-visible {
-  color: var(--c-ink);
-}
-
-.track {
-  display: inline-block;
-  letter-spacing: -.01em;
-}
-
-/* the scroll animation owns .track's letter-spacing; hover opens the inner span */
-.talk-text {
-  letter-spacing: inherit;
-  transition: letter-spacing 1.1s var(--ease-out);
-}
-
-.talk:hover .talk-text,
-.talk:focus-visible .talk-text {
-  letter-spacing: .03em;
-}
-
 .btn {
   display: inline-flex;
   align-items: center;
@@ -138,7 +86,7 @@ export default defineNuxtComponent({
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  margin-top: calc(160px * var(--space-scale));
+  margin-top: calc(48px * var(--space-scale));
 }
 
 .top {
@@ -168,10 +116,4 @@ export default defineNuxtComponent({
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .talk:hover .talk-text,
-  .talk:focus-visible .talk-text {
-    letter-spacing: inherit;
-  }
-}
 </style>
