@@ -157,15 +157,24 @@ export default defineNuxtComponent({
 }
 
 @media (max-width: 767px) {
-  .cover {
-    grid-template-columns: minmax(0, 1fr);
-    padding-top: 48px;
-    row-gap: 40px;
+  /* The cover fills the first screen below the masthead, content centred.
+     The fallback matches the one-line masthead until the real height is measured. */
+  .cover-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: calc(100svh - var(--masthead-h, calc(92px + 11.25vw)));
+    padding-block: 32px;
   }
 
-  .lines-left,
-  .lines-right {
-    grid-column: 1 / -1;
+  .cover {
+    grid-template-columns: minmax(0, 1fr);
+    padding-top: 0;
+  }
+
+  /* Cover lines are noise on a small screen. */
+  .lines {
+    display: none;
   }
 
   .portrait {
@@ -175,10 +184,6 @@ export default defineNuxtComponent({
 
   .portrait:nth-child(2) {
     margin-top: 48px;
-  }
-
-  .lines {
-    gap: 32px;
   }
 
   .intro {
