@@ -25,6 +25,8 @@ export interface FigureData {
   radius?: number
   caption?: string
   captionArrow?: boolean
+  /** Always show in colour instead of grayscale-until-hover. */
+  colour?: boolean
 }
 
 export type ProjectId = 'p1' | 'p2' | 'p3' | 'p4' | 'p5' | 'p6' | 'p7'
@@ -101,15 +103,26 @@ export const cover = {
       text: [{ text: 'Beer, music & ' }, { text: 'a charity story', em: true }],
     },
   ] as CoverLineData[],
-  portrait: {
-    src: null,
-    alt: 'Portrait of Pim Willems',
-    label: 'Portrait — [add photo]',
-    width: 1200,
-    height: 1500,
-    tone: 2,
-    reveal: 'none',
-  } as FigureData,
+  // Two small portraits, staggered between the cover lines.
+  portraits: [
+    {
+      src: '/images/portrait.jpg',
+      alt: 'Portrait of Pim Willems',
+      width: 1675,
+      height: 1675,
+      tone: 2,
+      reveal: 'none',
+      colour: true,
+    },
+    {
+      src: '/images/portrait-2.jpg',
+      alt: 'Pim Willems in sunglasses outside a coffee shop in Amsterdam',
+      width: 1500,
+      height: 2000,
+      tone: 3,
+      reveal: 'none',
+    },
+  ] as FigureData[],
   tagline: 'Hello, I still build things.',
   cta: { label: 'Enter the issue', href: '#work' } as NavLink,
 }
@@ -472,21 +485,17 @@ export const interlude = {
 export const stack = {
   kicker: 'The wardrobe',
   items: [
-    { text: 'Vue.js' },
+    { text: 'Vue' },
     { text: 'Nuxt', em: true },
-    { text: 'WordPress' },
+    { text: 'Next' },
+    { text: 'WordPress', em: true },
+    { text: 'Go' },
     { text: 'PHP', em: true },
     { text: 'Storyblok' },
-    { text: 'WooCommerce', em: true },
-    { text: 'ACF' },
-    { text: 'Google Maps', em: true },
-    { text: 'Spotify API' },
   ] as Segment[],
 }
 
 export const contact = {
-  kicker: 'Correspondence',
-  headline: [{ text: 'Let\'s ' }, { text: 'talk.', em: true }] as Segment[],
   href: LINKEDIN_URL,
   button: 'LinkedIn',
   copyright: '© 2026 Pim Willems',

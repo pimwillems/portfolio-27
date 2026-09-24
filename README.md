@@ -21,7 +21,7 @@ All copy and project data lives in [`app/data/issue.ts`](app/data/issue.ts). Ita
 
 ### Adding images
 
-1. Put the file in `public/images/projects/` (or `public/images/portrait.jpg` for the cover).
+1. Put the file in `public/images/projects/` (or `public/images/portrait.jpg` / `portrait-2.jpg` for the two small, staggered cover portraits).
 2. Set the figure's `src` in `issue.ts`, e.g. `src: '/images/projects/edsheeran_1.jpg'`.
 
 Each figure also needs `width` and `height`: the image's natural pixel size. The frame takes that aspect ratio and its width from the layout column, so images are never cropped. Source screenshots are stored as quality-90 JPEGs at their original resolution (transparent corners flattened onto white). Phone mockups with two tilted phones are cropped to a portrait slice around one phone so they read in the phone slots.
@@ -37,7 +37,7 @@ Every layout places three figures. Give each layout images of the shape it expec
 | `split-right` | landscape | phone (portrait) | landscape |
 | `mosaic` | landscape | phone (portrait) | any |
 
-While `src` is `null` the figure shows a grey tone block with its file name. Images render in grayscale and turn to colour on hover or while in the vertical centre of the viewport; the frame is sized from `width`/`height`, so swapping one in never shifts the layout. Files in use:
+While `src` is `null` the figure shows a grey tone block with its file name. Images render in grayscale (unless the figure sets `colour: true`, as the studio portrait does) and turn to colour on hover or while in the vertical centre of the viewport; the frame is sized from `width`/`height`, so swapping one in never shifts the layout. Files in use:
 
 | Project | Figures (in layout order) |
 |---|---|
@@ -48,7 +48,7 @@ While `src` is `null` the figure shows a grey tone block with its file name. Ima
 | 't Taphuys | `taphuys_desktop_1.jpg` · `taphuys_iphone11pro.jpg` · `taphuys_desktop_3.jpg` |
 | Trimbos Instituut | `trimbos_desktop_1.jpg` · `trimbos_iphone11pro.jpg` · `trimbos_desktop_2.jpg` |
 | The Voice Kids | `tvk_kleertjes_desktop.jpg` · `tvk_kleertjes_iphone11pro.jpg` · `tvk_kleertjes_detail.jpg` |
-| Cover | `portrait.jpg` |
+| Cover | `portrait.jpg` (square) · `portrait-2.jpg` (3:4) |
 
 ## Structure
 

@@ -13,12 +13,17 @@
         />
       </div>
 
-      <EditorialFigure
-        class="portrait l-cover"
-        v-bind="cover.portrait"
-        :span="6"
-        priority
-      />
+      <div class="portraits">
+        <EditorialFigure
+          v-for="(portrait, i) in cover.portraits"
+          :key="portrait.alt"
+          class="portrait l-cover"
+          v-bind="portrait"
+          :span="2"
+          :style="{ animationDelay: `${0.3 + i * 0.25}s` }"
+          priority
+        />
+      </div>
 
       <div class="lines lines-right">
         <CoverLine
@@ -76,8 +81,21 @@ export default defineNuxtComponent({
   grid-column: 1 / span 3;
 }
 
-.portrait {
+.portraits {
   grid-column: 4 / span 6;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--col-gap);
+}
+
+.portrait {
+  width: 240px;
+}
+
+/* Stagger: the second portrait sits lower, like two prints laid on a page. */
+.portrait:nth-child(2) {
+  margin-top: 96px;
 }
 
 .lines-right {
@@ -116,9 +134,17 @@ export default defineNuxtComponent({
     align-items: start;
   }
 
-  .portrait {
-    grid-column: 2 / span 4;
+  .portraits {
+    grid-column: 1 / -1;
     order: -1;
+  }
+
+  .portrait {
+    width: 200px;
+  }
+
+  .portrait:nth-child(2) {
+    margin-top: 64px;
   }
 
   .lines-left {
@@ -137,10 +163,18 @@ export default defineNuxtComponent({
     row-gap: 40px;
   }
 
-  .portrait,
   .lines-left,
   .lines-right {
     grid-column: 1 / -1;
+  }
+
+  .portrait {
+    width: calc(50% - var(--col-gap) / 2);
+    max-width: 160px;
+  }
+
+  .portrait:nth-child(2) {
+    margin-top: 48px;
   }
 
   .lines {
