@@ -16,7 +16,7 @@
       <EditorialFigure
         class="portrait l-cover"
         v-bind="cover.portrait"
-        :span="6"
+        :span="4"
         priority
       />
 
@@ -77,7 +77,7 @@ export default defineNuxtComponent({
 }
 
 .portrait {
-  grid-column: 4 / span 6;
+  grid-column: 5 / span 4;
 }
 
 .lines-right {
@@ -118,6 +118,8 @@ export default defineNuxtComponent({
 
   .portrait {
     grid-column: 2 / span 4;
+    justify-self: center;
+    width: min(100%, 320px);
     order: -1;
   }
 
@@ -141,6 +143,10 @@ export default defineNuxtComponent({
   .lines-left,
   .lines-right {
     grid-column: 1 / -1;
+  }
+
+  .portrait {
+    width: min(100%, 240px);
   }
 
   .lines {

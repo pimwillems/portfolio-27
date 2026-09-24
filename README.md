@@ -21,7 +21,7 @@ All copy and project data lives in [`app/data/issue.ts`](app/data/issue.ts). Ita
 
 ### Adding images
 
-1. Put the file in `public/images/projects/` (or `public/images/portrait.jpg` for the cover).
+1. Put the file in `public/images/projects/` (or `public/images/portrait.jpg` for the cover: a square photo, shown at 4 of 12 columns).
 2. Set the figure's `src` in `issue.ts`, e.g. `src: '/images/projects/edsheeran_1.jpg'`.
 
 Each figure also needs `width` and `height`: the image's natural pixel size. The frame takes that aspect ratio and its width from the layout column, so images are never cropped. Source screenshots are stored as quality-90 JPEGs at their original resolution (transparent corners flattened onto white). Phone mockups with two tilted phones are cropped to a portrait slice around one phone so they read in the phone slots.
