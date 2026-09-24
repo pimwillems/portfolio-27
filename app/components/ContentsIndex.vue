@@ -46,6 +46,7 @@
 <script lang="ts">
 import type { ProjectId } from '~/data/issue'
 import { contents, projects } from '~/data/issue'
+import { PREVIEW_DENSITIES, previewItems } from '~/components/ContentsPreview.vue'
 
 type Preview = { moveTo: (x: number, y: number, instant?: boolean) => void }
 
@@ -56,6 +57,26 @@ function isMouse(event: PointerEvent) {
 
 export default defineNuxtComponent({
   name: 'ContentsIndex',
+  setup() {
+    // The preview only mounts in the browser, so the prerenderer never sees its
+    // images. Resolving the same URLs here during SSR makes `nuxt generate`
+    // write them out; without this they 404 on static hosting.
+    if (import.meta.server) {
+      const img = useImage()
+      for (const item of previewItems(projects)) {
+        for (const density of PREVIEW_DENSITIES) {
+          img(item.src, {
+            width: item.imgWidth * density,
+            height: item.imgHeight * density,
+            // same key order as NuxtImg, which decides the URL
+            format: 'webp',
+            quality: img.options.quality,
+            fit: 'inside',
+          })
+        }
+      }
+    }
+  },
   data() {
     return {
       contents,

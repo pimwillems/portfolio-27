@@ -17,7 +17,7 @@
         alt=""
         :width="item.imgWidth"
         :height="item.imgHeight"
-        densities="x1 x2"
+        :densities="densities"
         format="webp"
         fit="inside"
         decoding="async"
@@ -33,12 +33,35 @@ import type { Project, ProjectId } from '~/data/issue'
 /** Longest side of the preview, in CSS pixels. */
 const SIZE = 280
 
-interface PreviewItem {
+/** Pixel densities rendered for each preview image. */
+export const PREVIEW_DENSITIES = [1, 2]
+
+export interface PreviewItem {
   id: ProjectId
   src: string
   imgWidth: number
   imgHeight: number
   style: Record<string, string>
+}
+
+/** One preview per project, sized from its first figure that has an image. */
+export function previewItems(projects: Project[]): PreviewItem[] {
+  const items: PreviewItem[] = []
+  for (const project of projects) {
+    const figure = project.figures.find(f => f.src)
+    if (!figure?.src) continue
+    const scale = SIZE / Math.max(figure.width, figure.height)
+    const width = Math.round(figure.width * scale)
+    const height = Math.round(figure.height * scale)
+    items.push({
+      id: project.id,
+      src: figure.src,
+      imgWidth: width,
+      imgHeight: height,
+      style: { width: `${width}px`, height: `${height}px` },
+    })
+  }
+  return items
 }
 
 /**
@@ -52,24 +75,12 @@ export default defineNuxtComponent({
     projects: { type: Array as PropType<Project[]>, required: true },
     active: { type: String as PropType<ProjectId | null>, default: null },
   },
+  data() {
+    return { densities: PREVIEW_DENSITIES.map(d => `x${d}`).join(' ') }
+  },
   computed: {
     items(): PreviewItem[] {
-      const items: PreviewItem[] = []
-      for (const project of this.projects) {
-        const figure = project.figures.find(f => f.src)
-        if (!figure?.src) continue
-        const scale = SIZE / Math.max(figure.width, figure.height)
-        const width = Math.round(figure.width * scale)
-        const height = Math.round(figure.height * scale)
-        items.push({
-          id: project.id,
-          src: figure.src,
-          imgWidth: width,
-          imgHeight: height,
-          style: { width: `${width}px`, height: `${height}px` },
-        })
-      }
-      return items
+      return previewItems(this.projects)
     },
   },
   methods: {
