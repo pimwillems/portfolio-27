@@ -19,6 +19,8 @@
 <script lang="ts">
 import { masthead } from '~/data/issue'
 
+let resizeObserver: ResizeObserver | null = null
+
 export default defineNuxtComponent({
   name: 'SiteMasthead',
   data() {
@@ -31,6 +33,19 @@ export default defineNuxtComponent({
   },
   mounted() {
     this.season = seasonLabel()
+    // Publish the masthead height so the cover can fill the rest of the first screen.
+    const root = document.documentElement
+    const el = this.$el as HTMLElement
+    const publish = () => root.style.setProperty('--masthead-h', `${el.offsetHeight}px`)
+    publish()
+    if ('ResizeObserver' in window) {
+      resizeObserver = new ResizeObserver(publish)
+      resizeObserver.observe(el)
+    }
+  },
+  beforeUnmount() {
+    resizeObserver?.disconnect()
+    resizeObserver = null
   },
 })
 </script>

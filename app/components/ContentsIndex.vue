@@ -22,23 +22,67 @@
       class="rule m-line"
       aria-hidden="true"
     />
-    <nav aria-labelledby="contents-title">
+    <nav
+      aria-labelledby="contents-title"
+      @pointermove="onMove"
+      @pointerleave="hide"
+    >
       <ContentsRow
         v-for="project in projects"
         :key="project.id"
         :project="project"
+        @pointerenter="show(project.id, $event)"
       />
     </nav>
+    <ContentsPreview
+      v-if="armed"
+      ref="preview"
+      :projects="projects"
+      :active="active"
+    />
   </section>
 </template>
 
 <script lang="ts">
+import type { ProjectId } from '~/data/issue'
 import { contents, projects } from '~/data/issue'
+
+type Preview = { moveTo: (x: number, y: number, instant?: boolean) => void }
+
+/** Only a real mouse gets the cursor preview; touch and pen keep the plain list. */
+function isMouse(event: PointerEvent) {
+  return event.pointerType === 'mouse' && window.matchMedia('(hover: hover) and (pointer: fine)').matches
+}
 
 export default defineNuxtComponent({
   name: 'ContentsIndex',
   data() {
-    return { contents, projects }
+    return {
+      contents,
+      projects,
+      /** The preview (and its images) mounts on the first mouse hover. */
+      armed: false,
+      active: null as ProjectId | null,
+    }
+  },
+  methods: {
+    async show(id: ProjectId, event: PointerEvent) {
+      if (!isMouse(event)) return
+      const appearing = this.active === null
+      if (!this.armed) {
+        this.armed = true
+        await this.$nextTick()
+      }
+      this.active = id
+      ;(this.$refs.preview as Preview | undefined)?.moveTo(event.clientX, event.clientY, appearing)
+    },
+    onMove(event: PointerEvent) {
+      if (this.active === null || !isMouse(event)) return
+      ;(this.$refs.preview as Preview | undefined)?.moveTo(event.clientX, event.clientY)
+    },
+    hide() {
+      this.active = null
+    },
   },
 })
 </script>
