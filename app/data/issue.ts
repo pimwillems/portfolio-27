@@ -3,7 +3,7 @@
  * Components render from this module; templates only hold structure.
  *
  * Images: drop files in `public/images/projects/` (or `public/images/` for the
- * portrait) and set `src` to the public path, e.g. '/images/projects/edsheeran_1.png'.
+ * portrait) and set `src` to the public path, e.g. '/images/projects/edsheeran_1.jpg'.
  * While `src` is null the figure renders a tone placeholder with its `label`.
  */
 
@@ -25,7 +25,7 @@ export interface FigureData {
   captionArrow?: boolean
 }
 
-export type ProjectId = 'p1' | 'p2' | 'p3' | 'p4' | 'p5'
+export type ProjectId = 'p1' | 'p2' | 'p3' | 'p4' | 'p5' | 'p6' | 'p7' | 'p8'
 export type ProjectLayout = 'split-left' | 'centered' | 'stat' | 'split-right' | 'gallery'
 
 export interface Project {
@@ -56,7 +56,7 @@ export const SITE_URL = 'https://pimwillems.dev'
 export const meta = {
   title: 'Pim Willems — Front-end & Full-stack Developer',
   description:
-    'Portfolio of Pim Willems: nearly a decade of building web products — Ed Sheeran, Martin Garrix, Ricoh, Trimbos, RTL — now lecturer at Fontys ICT.',
+    'Portfolio of Pim Willems: nearly a decade of building web products — Ed Sheeran, Martin Garrix, Ricoh, Trimbos, RTL, The Voice Kids — now lecturer at Fontys ICT.',
   ogImage: '/og-image.jpg',
   ogImageAlt: 'PIM WILLEMS set in Bodoni on a white page',
   person: {
@@ -127,7 +127,7 @@ export const letter = {
 
 export const contents = {
   heading: 'Contents',
-  count: 'Five features',
+  count: 'Eight features',
 }
 
 export const projects: Project[] = [
@@ -144,9 +144,9 @@ export const projects: Project[] = [
     tech: ['Vue.js', 'State management', 'Authentication'],
     figures: [
       {
-        src: '/images/projects/edsheeran_1.png',
+        src: '/images/projects/edsheeran_1.jpg',
         alt: 'Ed Sheeran butterfly hunt — the greenhouse screen with butterflies, a locked flower and a countdown timer',
-        label: 'edsheeran_1.png',
+        label: 'edsheeran_1.jpg',
         height: 900,
         tone: 1,
         reveal: 'clip-up',
@@ -154,9 +154,9 @@ export const projects: Project[] = [
         captionArrow: true,
       },
       {
-        src: '/images/projects/edsheeran_2.png',
+        src: '/images/projects/edsheeran_2.jpg',
         alt: 'Ed Sheeran butterfly hunt — a fan\'s collection of 12 of 14 butterflies',
-        label: 'edsheeran_2.png',
+        label: 'edsheeran_2.jpg',
         height: 400,
         tone: 6,
         reveal: 'clip-center',
@@ -164,9 +164,9 @@ export const projects: Project[] = [
         caption: 'Collecting',
       },
       {
-        src: '/images/projects/edsheeran_3.png',
+        src: '/images/projects/edsheeran_3.jpg',
         alt: 'Ed Sheeran butterfly hunt — entering a colour code to add a new flower to the greenhouse',
-        label: 'edsheeran_3.png',
+        label: 'edsheeran_3.jpg',
         height: 260,
         tone: 3,
         reveal: 'clip-up',
@@ -187,9 +187,9 @@ export const projects: Project[] = [
     tech: ['Vue.js', 'Spotify API', 'Localization'],
     figures: [
       {
-        src: '/images/projects/artistdreamteam1.jpg',
+        src: '/images/projects/artistdreamteam_1.jpg',
         alt: 'Martin Garrix Artist Dream Team — building a roster on a football pitch',
-        label: 'artistdreamteam1.jpg',
+        label: 'artistdreamteam_1.jpg',
         height: 600,
         tone: 2,
         reveal: 'clip-center',
@@ -197,9 +197,9 @@ export const projects: Project[] = [
         captionArrow: true,
       },
       {
-        src: '/images/projects/artistdreamteam_iphone11pro_1.jpg',
-        alt: 'Martin Garrix Artist Dream Team on two iPhones — the intro and the team pitch',
-        label: 'artistdreamteam_iphone11pro_1.jpg',
+        src: '/images/projects/artistdreamteam_iphone11pro.jpg',
+        alt: 'Martin Garrix Artist Dream Team on an iPhone — building a team on the pitch',
+        label: 'artistdreamteam_iphone11pro.jpg',
         height: 560,
         tone: 6,
         reveal: 'clip-up',
@@ -207,9 +207,9 @@ export const projects: Project[] = [
         caption: 'On mobile',
       },
       {
-        src: '/images/projects/artistdreamteam2.jpg',
+        src: '/images/projects/artistdreamteam_2.jpg',
         alt: 'Martin Garrix Artist Dream Team — landing page with artist cards and Connect with Spotify',
-        label: 'artistdreamteam2.jpg',
+        label: 'artistdreamteam_2.jpg',
         height: 240,
         tone: 4,
         reveal: 'clip-up',
@@ -230,9 +230,9 @@ export const projects: Project[] = [
     stat: { value: '11', label: ['franchisers.', 'One theme.'] },
     figures: [
       {
-        src: '/images/projects/ricoh_desktop2.png',
+        src: '/images/projects/ricoh_desktop_2.jpg',
         alt: 'Ricoh franchise platform — the Ricoh Document Center Nijmegen homepage on desktop',
-        label: 'ricoh_desktop2.png',
+        label: 'ricoh_desktop_2.jpg',
         height: 700,
         tone: 1,
         reveal: 'clip-center',
@@ -240,9 +240,9 @@ export const projects: Project[] = [
         captionArrow: true,
       },
       {
-        src: '/images/projects/ricoh_desktop1.png',
+        src: '/images/projects/ricoh_desktop_1.jpg',
         alt: 'Ricoh franchise platform — a printer product page managed by the franchise',
-        label: 'ricoh_desktop1.png',
+        label: 'ricoh_desktop_1.jpg',
         height: 460,
         tone: 5,
         reveal: 'clip-up',
@@ -250,9 +250,9 @@ export const projects: Project[] = [
         caption: 'Content, per franchise',
       },
       {
-        src: '/images/projects/ricoh_desktop3.png',
+        src: '/images/projects/ricoh_desktop_3.jpg',
         alt: 'Ricoh franchise platform — a custom form to find the right printer',
-        label: 'ricoh_desktop3.png',
+        label: 'ricoh_desktop_3.jpg',
         height: 220,
         tone: 3,
         reveal: 'clip-up',
@@ -318,18 +318,18 @@ export const projects: Project[] = [
     tech: ['Nuxt', 'Storyblok CMS', 'Static hosting'],
     figures: [
       {
-        src: '/images/projects/glimlach-1.png',
+        src: '/images/projects/glimlach_1.jpg',
         alt: 'RTL Project Glimlach — the opening of a story about a neonatologist',
-        label: 'glimlach-1.png',
+        label: 'glimlach_1.jpg',
         height: 380,
         tone: 3,
         reveal: 'clip-up',
         caption: 'The story opens',
       },
       {
-        src: '/images/projects/glimlach-3.png',
+        src: '/images/projects/glimlach_3.jpg',
         alt: 'RTL Project Glimlach — story blocks with portraits and more videos from the campaign',
-        label: 'glimlach-3.png',
+        label: 'glimlach_3.jpg',
         height: 820,
         tone: 2,
         reveal: 'clip-center',
@@ -337,13 +337,148 @@ export const projects: Project[] = [
         captionArrow: true,
       },
       {
-        src: '/images/projects/glimlach-2.png',
+        src: '/images/projects/glimlach_2.jpg',
         alt: 'RTL Project Glimlach — campaign homepage with a donation call to action',
-        label: 'glimlach-2.png',
+        label: 'glimlach_2.jpg',
         height: 280,
         tone: 5,
         reveal: 'clip-up',
         float: true,
+      },
+    ],
+  },
+  /*
+   * 06–08: placeholder copy and tech lines, written from the screenshots.
+   * Pim may change them.
+   */
+  {
+    id: 'p6',
+    number: '06',
+    layout: 'split-left',
+    title: [{ text: '\'t ' }, { text: 'Taphuys', em: true }],
+    contentsTitle: [{ text: '\'t ' }, { text: 'Taphuys', em: true }],
+    category: 'Hospitality website',
+    dek: 'Pick a bar, then a beer.',
+    body:
+      'A website for a beer bar and kitchen with several locations. Visitors choose their venue first, then browse the tap list — every beer with its own style, strength and tasting notes — and a menu of comfort food for lunch, drinks and dinner.',
+    tech: ['Multiple locations', 'Beer catalogue', 'Responsive'],
+    figures: [
+      {
+        src: '/images/projects/taphuys_desktop_1.jpg',
+        alt: '\'t Taphuys — homepage with the neon-lit bar and a panel to choose a location',
+        label: 'taphuys_desktop_1.jpg',
+        height: 640,
+        tone: 5,
+        reveal: 'clip-up',
+        caption: 'Choose your venue',
+        captionArrow: true,
+      },
+      {
+        src: '/images/projects/taphuys_iphone11pro.jpg',
+        alt: '\'t Taphuys on an iPhone — the beer page for La Trappe Isid\'or, with its ABV, IBU and taste profile',
+        label: 'taphuys_iphone11pro.jpg',
+        height: 400,
+        tone: 6,
+        reveal: 'clip-center',
+        float: true,
+        caption: 'On tap',
+      },
+      {
+        src: '/images/projects/taphuys_desktop_3.jpg',
+        alt: '\'t Taphuys — the kitchen page: comfort food with a twist for lunch, drinks and dinner',
+        label: 'taphuys_desktop_3.jpg',
+        height: 260,
+        tone: 3,
+        reveal: 'clip-up',
+        caption: 'The kitchen',
+      },
+    ],
+  },
+  {
+    id: 'p7',
+    number: '07',
+    layout: 'centered',
+    title: [{ text: 'Trimbos', em: true }, { text: ' Instituut' }],
+    contentsTitle: [{ text: 'Trimbos', em: true }, { text: ' Instituut' }],
+    category: 'Knowledge platform',
+    dek: 'Research, easy to find.',
+    body:
+      'The website of the Trimbos Institute, the Dutch knowledge institute for mental health, alcohol, tobacco and drugs. Research and dossiers are grouped by theme and target group, with filters that help professionals and the public find what they need.',
+    tech: ['Search & filters', 'Accessibility', 'Responsive'],
+    figures: [
+      {
+        src: '/images/projects/trimbos_desktop_1.jpg',
+        alt: 'Trimbos Institute — homepage with the institute\'s themes: alcohol, tobacco, drugs, mental health and participation',
+        label: 'trimbos_desktop_1.jpg',
+        height: 600,
+        tone: 2,
+        reveal: 'clip-center',
+        caption: 'Themes',
+        captionArrow: true,
+      },
+      {
+        src: '/images/projects/trimbos_iphone11pro.jpg',
+        alt: 'Trimbos Institute on an iPhone — the dossier overview with a search field',
+        label: 'trimbos_iphone11pro.jpg',
+        height: 560,
+        tone: 6,
+        reveal: 'clip-up',
+        radius: 40,
+        caption: 'On mobile',
+      },
+      {
+        src: '/images/projects/trimbos_desktop_2.jpg',
+        alt: 'Trimbos Institute — dossiers filtered by theme and target group',
+        label: 'trimbos_desktop_2.jpg',
+        height: 240,
+        tone: 4,
+        reveal: 'clip-up',
+        float: true,
+      },
+    ],
+  },
+  {
+    id: 'p8',
+    number: '08',
+    layout: 'split-right',
+    title: [{ text: 'The Voice' }, { text: ' Kids', em: true }],
+    contentsTitle: [{ text: 'The Voice Kids', em: true }, { text: ' for Kleertjes.com' }],
+    category: 'Campaign page',
+    client: 'For Kleertjes.com',
+    dek: 'Choose your style, take the stage.',
+    body:
+      'kleertjes.com became the main sponsor of The Voice Kids, dressing every talent through the Battles, Sing-Offs and Finals. This campaign page let young fans win € 1,000 to spend on clothes.',
+    tech: ['Campaign page', 'Responsive'],
+    figures: [
+      {
+        src: '/images/projects/tvk_kleertjes_desktop.jpg',
+        alt: 'The Voice Kids × kleertjes.com — campaign page to win € 1,000 in clothing vouchers',
+        label: 'tvk_kleertjes_desktop.jpg',
+        height: 760,
+        tone: 5,
+        reveal: 'clip-up',
+        caption: 'Win € 1,000',
+        captionArrow: true,
+      },
+      {
+        src: '/images/projects/tvk_kleertjes_iphone11pro.jpg',
+        alt: 'The Voice Kids × kleertjes.com campaign on an iPhone — the talents in their outfits and the sponsor announcement',
+        label: 'tvk_kleertjes_iphone11pro.jpg',
+        height: 400,
+        tone: 6,
+        reveal: 'clip-up',
+        float: true,
+        radius: 34,
+        caption: 'Mobile',
+      },
+      {
+        src: '/images/projects/tvk_kleertjes_detail.jpg',
+        alt: 'Four kids posing with drawn-in instruments under the line \'Choose your style, take the stage!\'',
+        label: 'tvk_kleertjes_detail.jpg',
+        height: 300,
+        tone: 1,
+        reveal: 'clip-center',
+        caption: 'The looks',
       },
     ],
   },

@@ -26,7 +26,7 @@
             :sizes="imgSizes"
             densities="x1"
             format="webp"
-            fit="inside"
+            fit="outside"
             :loading="priority ? 'eager' : 'lazy'"
             :fetchpriority="priority ? 'high' : 'auto'"
             :preload="priority"
