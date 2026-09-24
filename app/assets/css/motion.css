@@ -83,11 +83,6 @@
       animation-range: entry 0% cover 50%;
     }
 
-    .m-parallax {
-      animation: m-parallax linear both;
-      animation-timeline: view();
-    }
-
     .m-float {
       animation: m-float linear both;
       animation-timeline: view();
@@ -139,11 +134,6 @@
 @keyframes m-clip-center {
   from { clip-path: inset(18% 18% 18% 18%); }
   to { clip-path: inset(0 0 0 0); }
-}
-
-@keyframes m-parallax {
-  from { transform: translateY(-9%) scale(1.04); }
-  to { transform: translateY(9%) scale(1.04); }
 }
 
 @keyframes m-float {

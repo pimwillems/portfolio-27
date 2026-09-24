@@ -13,6 +13,7 @@ import FeatureCentered from './FeatureCentered.vue'
 import FeatureStat from './FeatureStat.vue'
 import FeatureSplitRight from './FeatureSplitRight.vue'
 import FeatureGallery from './FeatureGallery.vue'
+import FeatureMosaic from './FeatureMosaic.vue'
 
 const LAYOUTS = {
   'split-left': FeatureSplitLeft,
@@ -20,6 +21,7 @@ const LAYOUTS = {
   'stat': FeatureStat,
   'split-right': FeatureSplitRight,
   'gallery': FeatureGallery,
+  'mosaic': FeatureMosaic,
 } satisfies Record<ProjectLayout, unknown>
 
 /** Picks the spread layout for a project. */

@@ -16,6 +16,8 @@ export interface FigureData {
   src: string | null
   alt: string
   label: string
+  /** Natural pixel size of the image; the frame keeps this aspect ratio. */
+  width: number
   height: number
   tone?: Tone
   reveal?: Reveal
@@ -25,8 +27,8 @@ export interface FigureData {
   captionArrow?: boolean
 }
 
-export type ProjectId = 'p1' | 'p2' | 'p3' | 'p4' | 'p5' | 'p6' | 'p7' | 'p8'
-export type ProjectLayout = 'split-left' | 'centered' | 'stat' | 'split-right' | 'gallery'
+export type ProjectId = 'p1' | 'p2' | 'p3' | 'p4' | 'p5' | 'p6' | 'p7'
+export type ProjectLayout = 'split-left' | 'centered' | 'stat' | 'split-right' | 'gallery' | 'mosaic'
 
 export interface Project {
   id: ProjectId
@@ -35,7 +37,7 @@ export interface Project {
   title: Segment[] // e.g. [{text:'Ed'},{text:'Sheeran',em:true}]
   contentsTitle: Segment[] // title as shown in the Contents list
   category: string // 'Interactive campaign'
-  client?: string // 'For Trimbos'
+  client?: string // 'For Kleertjes.com'
   dek?: string
   body: string
   tech: string[]
@@ -96,14 +98,15 @@ export const cover = {
     },
     {
       kicker: 'Plus',
-      text: [{ text: 'Maps, music & ' }, { text: 'a charity story', em: true }],
+      text: [{ text: 'Beer, music & ' }, { text: 'a charity story', em: true }],
     },
   ] as CoverLineData[],
   portrait: {
     src: null,
     alt: 'Portrait of Pim Willems',
     label: 'Portrait — [add photo]',
-    height: 780,
+    width: 1200,
+    height: 1500,
     tone: 2,
     reveal: 'none',
   } as FigureData,
@@ -127,7 +130,7 @@ export const letter = {
 
 export const contents = {
   heading: 'Contents',
-  count: 'Eight features',
+  count: 'Seven features',
 }
 
 export const projects: Project[] = [
@@ -147,7 +150,8 @@ export const projects: Project[] = [
         src: '/images/projects/edsheeran_1.jpg',
         alt: 'Ed Sheeran butterfly hunt — the greenhouse screen with butterflies, a locked flower and a countdown timer',
         label: 'edsheeran_1.jpg',
-        height: 900,
+        width: 750,
+        height: 1334,
         tone: 1,
         reveal: 'clip-up',
         caption: 'The greenhouse',
@@ -157,7 +161,8 @@ export const projects: Project[] = [
         src: '/images/projects/edsheeran_2.jpg',
         alt: 'Ed Sheeran butterfly hunt — a fan\'s collection of 12 of 14 butterflies',
         label: 'edsheeran_2.jpg',
-        height: 400,
+        width: 750,
+        height: 1334,
         tone: 6,
         reveal: 'clip-center',
         float: true,
@@ -167,7 +172,8 @@ export const projects: Project[] = [
         src: '/images/projects/edsheeran_3.jpg',
         alt: 'Ed Sheeran butterfly hunt — entering a colour code to add a new flower to the greenhouse',
         label: 'edsheeran_3.jpg',
-        height: 260,
+        width: 750,
+        height: 1334,
         tone: 3,
         reveal: 'clip-up',
         caption: 'Trading codes',
@@ -190,7 +196,8 @@ export const projects: Project[] = [
         src: '/images/projects/artistdreamteam_1.jpg',
         alt: 'Martin Garrix Artist Dream Team — building a roster on a football pitch',
         label: 'artistdreamteam_1.jpg',
-        height: 600,
+        width: 1237,
+        height: 740,
         tone: 2,
         reveal: 'clip-center',
         caption: 'Build your roster',
@@ -200,7 +207,8 @@ export const projects: Project[] = [
         src: '/images/projects/artistdreamteam_iphone11pro.jpg',
         alt: 'Martin Garrix Artist Dream Team on an iPhone — building a team on the pitch',
         label: 'artistdreamteam_iphone11pro.jpg',
-        height: 560,
+        width: 560,
+        height: 900,
         tone: 6,
         reveal: 'clip-up',
         radius: 40,
@@ -210,7 +218,8 @@ export const projects: Project[] = [
         src: '/images/projects/artistdreamteam_2.jpg',
         alt: 'Martin Garrix Artist Dream Team — landing page with artist cards and Connect with Spotify',
         label: 'artistdreamteam_2.jpg',
-        height: 240,
+        width: 1237,
+        height: 740,
         tone: 4,
         reveal: 'clip-up',
         float: true,
@@ -233,7 +242,8 @@ export const projects: Project[] = [
         src: '/images/projects/ricoh_desktop_2.jpg',
         alt: 'Ricoh franchise platform — the Ricoh Document Center Nijmegen homepage on desktop',
         label: 'ricoh_desktop_2.jpg',
-        height: 700,
+        width: 1237,
+        height: 740,
         tone: 1,
         reveal: 'clip-center',
         caption: 'Franchise homepage',
@@ -243,7 +253,8 @@ export const projects: Project[] = [
         src: '/images/projects/ricoh_desktop_1.jpg',
         alt: 'Ricoh franchise platform — a printer product page managed by the franchise',
         label: 'ricoh_desktop_1.jpg',
-        height: 460,
+        width: 1237,
+        height: 740,
         tone: 5,
         reveal: 'clip-up',
         float: true,
@@ -253,7 +264,8 @@ export const projects: Project[] = [
         src: '/images/projects/ricoh_desktop_3.jpg',
         alt: 'Ricoh franchise platform — a custom form to find the right printer',
         label: 'ricoh_desktop_3.jpg',
-        height: 220,
+        width: 1237,
+        height: 740,
         tone: 3,
         reveal: 'clip-up',
         caption: 'Forms & shop',
@@ -263,51 +275,6 @@ export const projects: Project[] = [
   {
     id: 'p4',
     number: '04',
-    layout: 'split-right',
-    title: [{ text: 'IkStopNu', em: true }],
-    contentsTitle: [{ text: 'IkStopNu', em: true }, { text: ' for Trimbos' }],
-    category: 'Public health tool',
-    client: 'For Trimbos',
-    dek: 'Help, just around the corner.',
-    body:
-      'A custom Google Maps integration that lets visitors find verified local coaching near them — built to be accessible to everyone who needs it.',
-    tech: ['WordPress', 'Google Maps API', 'Accessibility'],
-    figures: [
-      {
-        src: '/images/projects/ikstopnu_desktop_1.png',
-        alt: 'IkStopNu for Trimbos — map of verified quit-smoking coaches across the Netherlands',
-        label: 'ikstopnu_desktop_1.png',
-        height: 760,
-        tone: 2,
-        reveal: 'clip-up',
-        caption: 'Find a coach nearby',
-        captionArrow: true,
-      },
-      {
-        src: '/images/projects/ikstopnu_iphone11pro.png',
-        alt: 'IkStopNu coach finder on two iPhones — the map and a coach\'s contact details',
-        label: 'ikstopnu_iphone11pro.png',
-        height: 400,
-        tone: 6,
-        reveal: 'clip-up',
-        float: true,
-        radius: 34,
-        caption: 'Mobile',
-      },
-      {
-        src: '/images/projects/ikstopnu_desktop_2.png',
-        alt: 'IkStopNu — list of coaching results near Delft next to the map',
-        label: 'ikstopnu_desktop_2.png',
-        height: 300,
-        tone: 1,
-        reveal: 'clip-center',
-        caption: 'Results',
-      },
-    ],
-  },
-  {
-    id: 'p5',
-    number: '05',
     layout: 'gallery',
     title: [{ text: 'RTL ' }, { text: 'Project Glimlach', em: true }],
     contentsTitle: [{ text: 'RTL ' }, { text: 'Project Glimlach', em: true }],
@@ -321,7 +288,8 @@ export const projects: Project[] = [
         src: '/images/projects/glimlach_1.jpg',
         alt: 'RTL Project Glimlach — the opening of a story about a neonatologist',
         label: 'glimlach_1.jpg',
-        height: 380,
+        width: 1296,
+        height: 752,
         tone: 3,
         reveal: 'clip-up',
         caption: 'The story opens',
@@ -330,7 +298,8 @@ export const projects: Project[] = [
         src: '/images/projects/glimlach_3.jpg',
         alt: 'RTL Project Glimlach — story blocks with portraits and more videos from the campaign',
         label: 'glimlach_3.jpg',
-        height: 820,
+        width: 1296,
+        height: 752,
         tone: 2,
         reveal: 'clip-center',
         caption: 'Block by block',
@@ -340,7 +309,8 @@ export const projects: Project[] = [
         src: '/images/projects/glimlach_2.jpg',
         alt: 'RTL Project Glimlach — campaign homepage with a donation call to action',
         label: 'glimlach_2.jpg',
-        height: 280,
+        width: 1296,
+        height: 752,
         tone: 5,
         reveal: 'clip-up',
         float: true,
@@ -348,13 +318,13 @@ export const projects: Project[] = [
     ],
   },
   /*
-   * 06–08: placeholder copy and tech lines, written from the screenshots.
+   * 05–07: placeholder copy and tech lines, written from the screenshots.
    * Pim may change them.
    */
   {
-    id: 'p6',
-    number: '06',
-    layout: 'split-left',
+    id: 'p5',
+    number: '05',
+    layout: 'split-right',
     title: [{ text: '\'t ' }, { text: 'Taphuys', em: true }],
     contentsTitle: [{ text: '\'t ' }, { text: 'Taphuys', em: true }],
     category: 'Hospitality website',
@@ -367,7 +337,8 @@ export const projects: Project[] = [
         src: '/images/projects/taphuys_desktop_1.jpg',
         alt: '\'t Taphuys — homepage with the neon-lit bar and a panel to choose a location',
         label: 'taphuys_desktop_1.jpg',
-        height: 640,
+        width: 1237,
+        height: 740,
         tone: 5,
         reveal: 'clip-up',
         caption: 'Choose your venue',
@@ -377,7 +348,8 @@ export const projects: Project[] = [
         src: '/images/projects/taphuys_iphone11pro.jpg',
         alt: '\'t Taphuys on an iPhone — the beer page for La Trappe Isid\'or, with its ABV, IBU and taste profile',
         label: 'taphuys_iphone11pro.jpg',
-        height: 400,
+        width: 560,
+        height: 900,
         tone: 6,
         reveal: 'clip-center',
         float: true,
@@ -387,7 +359,8 @@ export const projects: Project[] = [
         src: '/images/projects/taphuys_desktop_3.jpg',
         alt: '\'t Taphuys — the kitchen page: comfort food with a twist for lunch, drinks and dinner',
         label: 'taphuys_desktop_3.jpg',
-        height: 260,
+        width: 1237,
+        height: 740,
         tone: 3,
         reveal: 'clip-up',
         caption: 'The kitchen',
@@ -395,8 +368,8 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 'p7',
-    number: '07',
+    id: 'p6',
+    number: '06',
     layout: 'centered',
     title: [{ text: 'Trimbos', em: true }, { text: ' Instituut' }],
     contentsTitle: [{ text: 'Trimbos', em: true }, { text: ' Instituut' }],
@@ -410,7 +383,8 @@ export const projects: Project[] = [
         src: '/images/projects/trimbos_desktop_1.jpg',
         alt: 'Trimbos Institute — homepage with the institute\'s themes: alcohol, tobacco, drugs, mental health and participation',
         label: 'trimbos_desktop_1.jpg',
-        height: 600,
+        width: 1237,
+        height: 740,
         tone: 2,
         reveal: 'clip-center',
         caption: 'Themes',
@@ -420,7 +394,8 @@ export const projects: Project[] = [
         src: '/images/projects/trimbos_iphone11pro.jpg',
         alt: 'Trimbos Institute on an iPhone — the dossier overview with a search field',
         label: 'trimbos_iphone11pro.jpg',
-        height: 560,
+        width: 560,
+        height: 900,
         tone: 6,
         reveal: 'clip-up',
         radius: 40,
@@ -430,7 +405,8 @@ export const projects: Project[] = [
         src: '/images/projects/trimbos_desktop_2.jpg',
         alt: 'Trimbos Institute — dossiers filtered by theme and target group',
         label: 'trimbos_desktop_2.jpg',
-        height: 240,
+        width: 1237,
+        height: 740,
         tone: 4,
         reveal: 'clip-up',
         float: true,
@@ -438,9 +414,9 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 'p8',
-    number: '08',
-    layout: 'split-right',
+    id: 'p7',
+    number: '07',
+    layout: 'mosaic',
     title: [{ text: 'The Voice' }, { text: ' Kids', em: true }],
     contentsTitle: [{ text: 'The Voice Kids', em: true }, { text: ' for Kleertjes.com' }],
     category: 'Campaign page',
@@ -454,7 +430,8 @@ export const projects: Project[] = [
         src: '/images/projects/tvk_kleertjes_desktop.jpg',
         alt: 'The Voice Kids × kleertjes.com — campaign page to win € 1,000 in clothing vouchers',
         label: 'tvk_kleertjes_desktop.jpg',
-        height: 760,
+        width: 1325,
+        height: 788,
         tone: 5,
         reveal: 'clip-up',
         caption: 'Win € 1,000',
@@ -464,7 +441,8 @@ export const projects: Project[] = [
         src: '/images/projects/tvk_kleertjes_iphone11pro.jpg',
         alt: 'The Voice Kids × kleertjes.com campaign on an iPhone — the talents in their outfits and the sponsor announcement',
         label: 'tvk_kleertjes_iphone11pro.jpg',
-        height: 400,
+        width: 560,
+        height: 900,
         tone: 6,
         reveal: 'clip-up',
         float: true,
@@ -475,7 +453,8 @@ export const projects: Project[] = [
         src: '/images/projects/tvk_kleertjes_detail.jpg',
         alt: 'Four kids posing with drawn-in instruments under the line \'Choose your style, take the stage!\'',
         label: 'tvk_kleertjes_detail.jpg',
-        height: 300,
+        width: 465,
+        height: 465,
         tone: 1,
         reveal: 'clip-center',
         caption: 'The looks',
