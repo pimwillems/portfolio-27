@@ -47,7 +47,7 @@ export default defineNuxtComponent({
 
 <style scoped>
 .letter {
-  padding-top: calc(300px * var(--space-scale));
+  padding-top: calc(180px * var(--space-scale));
   padding-bottom: calc(280px * var(--space-scale));
   row-gap: 72px;
   text-align: center;
@@ -101,7 +101,9 @@ export default defineNuxtComponent({
 }
 
 @media (max-width: 767px) {
+  /* the centred cover already leaves space below the CTA */
   .letter {
+    padding-top: 24px;
     row-gap: 48px;
   }
 
