@@ -24,7 +24,7 @@ All copy and project data lives in [`app/data/issue.ts`](app/data/issue.ts). Ita
 1. Put the file in `public/images/projects/` (or `public/images/portrait.jpg` for the cover).
 2. Set the figure's `src` in `issue.ts`, e.g. `src: '/images/projects/edsheeran_1.png'`.
 
-While `src` is `null` the figure shows a grey tone block with its file name. Images always render in grayscale, and the frame has a fixed height, so swapping one in never shifts the layout. Files in use:
+While `src` is `null` the figure shows a grey tone block with its file name. Images render in grayscale and turn to colour on hover or while in the vertical centre of the viewport; the frame has a fixed height, so swapping one in never shifts the layout. Files in use:
 
 | Project | Figures (in layout order) |
 |---|---|

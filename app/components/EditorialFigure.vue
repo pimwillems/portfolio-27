@@ -1,7 +1,7 @@
 <template>
   <figure
     class="fig"
-    :class="{ 'm-float': float }"
+    :class="{ 'm-float': float, 'is-centered': centered }"
   >
     <div
       v-reveal
@@ -65,9 +65,35 @@ import type { Reveal, Tone } from '~/data/issue'
 const DESKTOP_CONTENT = 1248 // 1440 − 2 × 96 gutter
 const COL = (DESKTOP_CONTENT - 11 * 24) / 12
 
+// One shared observer whose root is a thin band across the middle of the
+// viewport: a figure is "centred" while it crosses that band.
+type CenterCallback = (centered: boolean) => void
+let centerObserver: IntersectionObserver | null = null
+const centerCallbacks = new WeakMap<Element, CenterCallback>()
+
+function observeCenter(el: Element, callback: CenterCallback) {
+  if (!('IntersectionObserver' in window)) return
+  if (!centerObserver) {
+    centerObserver = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) centerCallbacks.get(entry.target)?.(entry.isIntersecting)
+      },
+      { rootMargin: '-49% 0px -49% 0px' },
+    )
+  }
+  centerCallbacks.set(el, callback)
+  centerObserver.observe(el)
+}
+
+function unobserveCenter(el: Element) {
+  centerCallbacks.delete(el)
+  centerObserver?.unobserve(el)
+}
+
 /**
  * The core editorial image: a fixed-height grayscale frame with parallax,
  * hover zoom + veil, scroll reveal and a tone placeholder while `src` is null.
+ * It turns to colour on hover and while it sits in the vertical centre of the viewport.
  */
 export default defineNuxtComponent({
   name: 'EditorialFigure',
@@ -86,6 +112,11 @@ export default defineNuxtComponent({
     priority: { type: Boolean, default: false },
     /** Desktop column span (of 12), used to size the image request. */
     span: { type: Number, default: 12 },
+  },
+  data() {
+    return {
+      centered: false,
+    }
   },
   computed: {
     revealClass(): string {
@@ -114,6 +145,14 @@ export default defineNuxtComponent({
       return `xs:150vw md:150vw lg:${vw}vw xl:${this.imgWidth}px`
     },
   },
+  mounted() {
+    observeCenter(this.$el as Element, (centered) => {
+      this.centered = centered
+    })
+  },
+  beforeUnmount() {
+    unobserveCenter(this.$el as Element)
+  },
 })
 </script>
 
@@ -131,6 +170,12 @@ export default defineNuxtComponent({
   height: max(var(--fig-min), calc(var(--h) * var(--fig-scale)));
   filter: grayscale(1);
   background: var(--tone);
+  transition: filter .8s var(--ease-out);
+}
+
+.fig:hover .frame,
+.fig.is-centered .frame {
+  filter: grayscale(0);
 }
 
 .tone-1 { --tone: var(--c-tone-1); }
