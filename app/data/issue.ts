@@ -25,6 +25,8 @@ export interface FigureData {
   radius?: number
   caption?: string
   captionArrow?: boolean
+  /** Always show in colour instead of grayscale-until-hover. */
+  colour?: boolean
 }
 
 export type ProjectId = 'p1' | 'p2' | 'p3' | 'p4' | 'p5' | 'p6' | 'p7'
@@ -110,11 +112,11 @@ export const cover = {
       height: 1675,
       tone: 2,
       reveal: 'none',
+      colour: true,
     },
     {
-      src: null,
-      alt: 'Second portrait of Pim Willems',
-      label: 'portrait-2.jpg',
+      src: '/images/portrait-2.jpg',
+      alt: 'Pim Willems in sunglasses outside a coffee shop in Amsterdam',
       width: 1500,
       height: 2000,
       tone: 3,

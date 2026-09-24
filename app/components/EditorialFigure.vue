@@ -6,7 +6,7 @@
     <div
       v-reveal
       class="frame"
-      :class="[revealClass, `tone-${tone}`, { rounded: radius > 0 }]"
+      :class="[revealClass, `tone-${tone}`, { rounded: radius > 0, 'is-colour': colour }]"
       :style="frameStyle"
       :role="src ? undefined : 'img'"
       :aria-label="src ? undefined : alt"
@@ -86,7 +86,8 @@ function unobserveCenter(el: Element) {
 /**
  * The core editorial image: a grayscale frame at the image's own aspect
  * ratio (never cropped), hover veil, scroll reveal and a tone placeholder while `src` is null.
- * It turns to colour on hover and while it sits in the vertical centre of the viewport.
+ * It turns to colour on hover and while it sits in the vertical centre of the viewport,
+ * or stays in colour when `colour` is set.
  */
 export default defineNuxtComponent({
   name: 'EditorialFigure',
@@ -104,6 +105,8 @@ export default defineNuxtComponent({
     captionArrow: { type: Boolean, default: false },
     label: { type: String, default: '' },
     priority: { type: Boolean, default: false },
+    /** Always in colour, never grayscale. */
+    colour: { type: Boolean, default: false },
     /** Desktop column span (of 12), used to size the image request. */
     span: { type: Number, default: 12 },
   },
@@ -167,7 +170,8 @@ export default defineNuxtComponent({
 }
 
 .fig:hover .frame,
-.fig.is-centered .frame {
+.fig.is-centered .frame,
+.frame.is-colour {
   filter: grayscale(0);
 }
 

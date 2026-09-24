@@ -37,7 +37,7 @@ Every layout places three figures. Give each layout images of the shape it expec
 | `split-right` | landscape | phone (portrait) | landscape |
 | `mosaic` | landscape | phone (portrait) | any |
 
-While `src` is `null` the figure shows a grey tone block with its file name. Images render in grayscale and turn to colour on hover or while in the vertical centre of the viewport; the frame is sized from `width`/`height`, so swapping one in never shifts the layout. Files in use:
+While `src` is `null` the figure shows a grey tone block with its file name. Images render in grayscale (unless the figure sets `colour: true`, as the studio portrait does) and turn to colour on hover or while in the vertical centre of the viewport; the frame is sized from `width`/`height`, so swapping one in never shifts the layout. Files in use:
 
 | Project | Figures (in layout order) |
 |---|---|
