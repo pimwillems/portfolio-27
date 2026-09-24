@@ -12,9 +12,6 @@ export default defineNuxtConfig({
         { name: 'theme-color', content: '#FFFFFF' },
       ],
       link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
-      // Flags JS support before first paint, so the mobile menu button can
-      // replace the inline nav without a layout shift (and never without JS).
-      script: [{ innerHTML: 'document.documentElement.classList.add(\'js\')', tagPosition: 'head' }],
     },
   },
 

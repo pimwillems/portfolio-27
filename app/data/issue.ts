@@ -70,15 +70,7 @@ export const meta = {
 export const masthead = {
   name: 'PIM WILLEMS',
   issue: 'The Build Issue — No. 01',
-  season: 'Autumn 2026',
   skipLink: 'Skip to work',
-  menuLabel: 'Menu',
-  closeLabel: 'Close',
-  nav: [
-    { label: 'Work', href: '#work' },
-    { label: 'About', href: '#about' },
-    { label: 'Contact', href: '#contact' },
-  ] as NavLink[],
 }
 
 export const cover = {
