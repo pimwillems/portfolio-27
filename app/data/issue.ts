@@ -101,14 +101,26 @@ export const cover = {
       text: [{ text: 'Beer, music & ' }, { text: 'a charity story', em: true }],
     },
   ] as CoverLineData[],
-  portrait: {
-    src: '/images/portrait.jpg',
-    alt: 'Portrait of Pim Willems',
-    width: 1675,
-    height: 1675,
-    tone: 2,
-    reveal: 'none',
-  } as FigureData,
+  // Two small portraits, staggered between the cover lines.
+  portraits: [
+    {
+      src: '/images/portrait.jpg',
+      alt: 'Portrait of Pim Willems',
+      width: 1675,
+      height: 1675,
+      tone: 2,
+      reveal: 'none',
+    },
+    {
+      src: null,
+      alt: 'Second portrait of Pim Willems',
+      label: 'portrait-2.jpg',
+      width: 1500,
+      height: 2000,
+      tone: 3,
+      reveal: 'none',
+    },
+  ] as FigureData[],
   tagline: 'Hello, I still build things.',
   cta: { label: 'Enter the issue', href: '#work' } as NavLink,
 }
