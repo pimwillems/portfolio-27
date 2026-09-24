@@ -1,0 +1,222 @@
+/* =========================================================
+   7.1 Load animations — first paint, run once
+   ========================================================= */
+
+/* masthead tighten */
+.l-mast {
+  display: inline-block;
+  animation: l-mast 2.2s var(--ease-out) both;
+}
+
+@keyframes l-mast {
+  from { letter-spacing: .35em; opacity: 0; }
+  to { letter-spacing: .015em; opacity: 1; }
+}
+
+/* cover open */
+.l-cover {
+  animation: l-cover 2.4s var(--ease-out) .3s both;
+}
+
+@keyframes l-cover {
+  from { clip-path: inset(50% 50% 50% 50%); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+/* fade rise */
+.l-fade {
+  animation: l-fade 1.8s var(--ease-out) both;
+}
+
+@keyframes l-fade {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* line rise: inner span inside an overflow-hidden wrapper */
+.l-rise {
+  display: block;
+  overflow: hidden;
+}
+
+.l-rise > span {
+  display: inline-block;
+  animation: l-rise 1.6s var(--ease-out) both;
+}
+
+@keyframes l-rise {
+  from { transform: translateY(110%); }
+  to { transform: none; }
+}
+
+/* =========================================================
+   7.2 Scroll-driven animations (primary)
+   ========================================================= */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .m-progress {
+      animation: m-progress linear both;
+      animation-timeline: scroll(root);
+    }
+
+    .m-recede {
+      animation: m-recede linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 900px;
+    }
+
+    .m-rise {
+      animation: m-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 90%;
+    }
+
+    .m-clip-up {
+      animation: m-clip-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 50%;
+    }
+
+    .m-clip-center {
+      animation: m-clip-center linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 50%;
+    }
+
+    .m-parallax {
+      animation: m-parallax linear both;
+      animation-timeline: view();
+    }
+
+    .m-float {
+      animation: m-float linear both;
+      animation-timeline: view();
+    }
+
+    .m-drift {
+      animation: m-drift linear both;
+      animation-timeline: view();
+    }
+
+    .m-drift-r {
+      animation: m-drift-r linear both;
+      animation-timeline: view();
+    }
+
+    .m-track {
+      animation: m-track linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 50%;
+    }
+
+    .m-line {
+      transform-origin: left;
+      animation: m-line linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 35%;
+    }
+  }
+}
+
+@keyframes m-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes m-recede {
+  to { transform: scale(.86); opacity: .15; }
+}
+
+@keyframes m-rise {
+  from { opacity: 0; transform: translateY(50px); }
+}
+
+@keyframes m-clip-up {
+  from { clip-path: inset(100% 0 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes m-clip-center {
+  from { clip-path: inset(18% 18% 18% 18%); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes m-parallax {
+  from { transform: translateY(-9%) scale(1.04); }
+  to { transform: translateY(9%) scale(1.04); }
+}
+
+@keyframes m-float {
+  from { transform: translateY(120px); }
+  to { transform: translateY(-120px); }
+}
+
+@keyframes m-drift {
+  from { transform: translateX(8%); }
+  to { transform: translateX(-8%); }
+}
+
+@keyframes m-drift-r {
+  from { transform: translateX(-8%); }
+  to { transform: translateX(8%); }
+}
+
+@keyframes m-track {
+  from { letter-spacing: .3em; opacity: 0; }
+  to { letter-spacing: -.01em; opacity: 1; }
+}
+
+@keyframes m-line {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* =========================================================
+   7.3 Fallback — v-reveal adds .is-pending, then .is-in
+   (only when animation-timeline is unsupported)
+   ========================================================= */
+.is-pending {
+  transition:
+    opacity var(--t-slow) var(--ease-out),
+    transform var(--t-slow) var(--ease-out),
+    clip-path var(--t-slow) var(--ease-out),
+    letter-spacing var(--t-slow) var(--ease-out);
+}
+
+.m-rise.is-pending:not(.is-in) {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.m-clip-up.is-pending:not(.is-in) {
+  clip-path: inset(100% 0 0 0);
+}
+
+.m-clip-center.is-pending:not(.is-in) {
+  clip-path: inset(18% 18% 18% 18%);
+}
+
+.m-track.is-pending:not(.is-in) {
+  opacity: 0;
+  letter-spacing: .3em;
+}
+
+.m-line {
+  transform-origin: left;
+}
+
+.m-line.is-pending:not(.is-in) {
+  transform: scaleX(0);
+}
+
+/* =========================================================
+   7.4 Reduced motion — everything in its final state
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .l-mast,
+  .l-cover,
+  .l-fade,
+  .l-rise > span {
+    animation: none;
+  }
+}
