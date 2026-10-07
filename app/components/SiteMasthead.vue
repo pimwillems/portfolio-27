@@ -7,7 +7,10 @@
 
     <div class="bar cap l-fade">
       <span class="issue">{{ masthead.issue }}</span>
-      <span class="season">{{ season }}</span>
+      <span class="aside">
+        <span class="season">{{ season }}</span>
+        <ThemeToggle :label="masthead.themeToggle" />
+      </span>
     </div>
 
     <h1 class="title serif m-recede">
@@ -83,6 +86,12 @@ export default defineNuxtComponent({
 .issue,
 .season {
   white-space: nowrap;
+}
+
+.aside {
+  display: flex;
+  align-items: center;
+  gap: 32px;
 }
 
 /* ---------- masthead title ---------- */

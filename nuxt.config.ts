@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { themeInitScript } from './app/utils/theme'
+
 export default defineNuxtConfig({
   modules: ['@nuxt/fonts', '@nuxt/image', '@nuxt/eslint'],
 
@@ -9,9 +11,13 @@ export default defineNuxtConfig({
       htmlAttrs: { lang: 'en' },
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'theme-color', content: '#FFFFFF' },
+        { name: 'color-scheme', content: 'light dark' },
+        // theme-color is added by the theme script, not here: a head-managed
+        // meta would be reset to its static value on hydration
       ],
       link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+      // blocking on purpose: sets <html data-theme> before first paint (no flash)
+      script: [{ innerHTML: themeInitScript, tagPosition: 'head' }],
     },
   },
 

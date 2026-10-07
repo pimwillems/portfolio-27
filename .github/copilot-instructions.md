@@ -14,6 +14,7 @@ A single-page editorial portfolio ("The Build Issue") for Pim Willems, built wit
 
 - **Options API only**: `<script lang="ts">` + `export default defineNuxtComponent({ … })`. No `<script setup>`, no `ref()`/`computed()`.
 - Plain CSS with tokens from `app/assets/css/tokens.css`; scoped component styles. No Tailwind or UI libraries.
+- Colours come from `--c-*` tokens only, so the dark theme (`[data-theme="dark"]` / `prefers-color-scheme`, set up in `app/utils/theme.ts` + `ThemeToggle`) covers every component.
 - Motion: CSS only (`motion.css`). Load animations use `.l-*` classes; scroll-driven ones use `.m-*` classes plus `v-reveal` for the IntersectionObserver fallback. Every transition uses `var(--ease-out)`. No JS animation libraries.
 - Every hover effect also applies on `:focus-visible`; respect `prefers-reduced-motion`.
 - Animate only `transform`, `opacity`, `clip-path` and (for the three display headings) `letter-spacing`. Keep CLS at 0: centred text whose width animates is positioned with `margin-left: 50%; transform: translateX(-50%)`.
