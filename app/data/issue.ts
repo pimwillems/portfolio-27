@@ -60,7 +60,7 @@ export const SITE_URL = 'https://pimwillems.dev'
 export const meta = {
   title: 'Pim Willems — Front-end & Full-stack Developer',
   description:
-    'Portfolio of Pim Willems: nearly a decade of building web products — Ed Sheeran, Martin Garrix, Ricoh, Trimbos, RTL, The Voice Kids — now lecturer at Fontys ICT.',
+    'Portfolio of Pim Willems. I built web products for almost ten years: Ed Sheeran, Martin Garrix, Ricoh, Trimbos, RTL, The Voice Kids. Now I teach at Fontys ICT.',
   ogImage: '/og-image.jpg',
   ogImageAlt: 'PIM WILLEMS set in Bodoni on a white page',
   person: {
@@ -138,7 +138,7 @@ export const letter = {
     { text: ' building.' },
   ] as Segment[],
   body:
-    'I spent years making web products — campaigns for global artists, platforms for franchise networks, tools that help people find support nearby. Today I\'m a lecturer and coordinator at Fontys ICT in Tilburg, teaching front-end and full-stack development. What follows is a selection.',
+    'For years I built web products: campaigns for global artists, platforms for franchise networks, sites that help people find support nearby. Now I teach front-end and full-stack development at Fontys ICT in Tilburg, and I coordinate too. Here is a selection of my work.',
   signoff: '— Pim Willems',
 }
 
@@ -157,7 +157,7 @@ export const projects: Project[] = [
     category: 'Interactive campaign',
     dek: 'Butterflies in the greenhouse.',
     body:
-      'An interactive, browser-based butterfly hunt. Fans traded greenhouse codes with one another to collect exclusive items — a game that only worked when the community played it together.',
+      'A butterfly hunt in the browser. Fans traded greenhouse codes with each other to collect exclusive items. You could not finish it alone. The community had to play together.',
     tech: ['Vue.js', 'State management', 'Authentication'],
     figures: [
       {
@@ -203,7 +203,7 @@ export const projects: Project[] = [
     category: 'EURO2020 experience',
     dek: 'Pick your dream team.',
     body:
-      'A EURO2020 experience where fans built their own artist roster, with Spotify audio previews playing as they picked each player.',
+      'A EURO2020 game where fans built their own artist roster. Every pick played a Spotify preview, so you heard your team while you chose it.',
     tech: ['Vue.js', 'Spotify API', 'Localization'],
     figures: [
       {
@@ -248,7 +248,7 @@ export const projects: Project[] = [
     contentsTitle: [{ text: 'Ricoh' }],
     category: 'Franchise platform',
     body:
-      'A customisable WordPress theme serving 11 franchisers. ACF-powered content management lets every franchise run its own site on one shared foundation.',
+      'One WordPress theme for 11 franchisers. With ACF, every franchise manages its own content, and they all share the same foundation.',
     tech: ['Custom WordPress', 'Custom forms', 'WooCommerce', 'ACF'],
     stat: { value: '11', label: ['franchisers.', 'One theme.'] },
     figures: [
@@ -295,7 +295,7 @@ export const projects: Project[] = [
     category: 'Charity campaign',
     dek: 'Stories, block by block.',
     body:
-      'A campaign site with drag-and-drop storytelling blocks, so producers could build charity stories themselves. Statically hosted, and fast.',
+      'A campaign site with drag-and-drop story blocks. Producers built the charity stories themselves, without a developer. The site is static, so it loads fast.',
     tech: ['Nuxt', 'Storyblok CMS', 'Static hosting'],
     figures: [
       {
@@ -344,7 +344,7 @@ export const projects: Project[] = [
     category: 'Hospitality website',
     dek: 'Pick a bar, then a beer.',
     body:
-      'A website for a beer bar and kitchen with several locations. Visitors choose their venue first, then browse the tap list — every beer with its own style, strength and tasting notes — and a menu of comfort food for lunch, drinks and dinner.',
+      'A website for a beer bar and kitchen with several locations. You pick your venue first. Then you browse the tap list, where every beer has its own style, strength and tasting notes. There is a comfort food menu for lunch, drinks and dinner.',
     tech: ['Multiple locations', 'Beer catalogue', 'Responsive'],
     figures: [
       {
@@ -390,7 +390,7 @@ export const projects: Project[] = [
     category: 'Knowledge platform',
     dek: 'Research, easy to find.',
     body:
-      'The website of the Trimbos Institute, the Dutch knowledge institute for mental health, alcohol, tobacco and drugs. Research and dossiers are grouped by theme and target group, with filters that help professionals and the public find what they need.',
+      'The website of the Trimbos Institute, the Dutch knowledge institute for mental health, alcohol, tobacco and drugs. Research and dossiers are grouped by theme and target group. Filters help professionals and the public find what they need.',
     tech: ['Search & filters', 'Accessibility', 'Responsive'],
     figures: [
       {
@@ -437,7 +437,7 @@ export const projects: Project[] = [
     client: 'For Kleertjes.com',
     dek: 'Choose your style, take the stage.',
     body:
-      'kleertjes.com became the main sponsor of The Voice Kids, dressing every talent through the Battles, Sing-Offs and Finals. This campaign page let young fans win € 1,000 to spend on clothes.',
+      'kleertjes.com was the main sponsor of The Voice Kids and dressed every talent, from the Battles to the Finals. On this campaign page, young fans could win € 1,000 to spend on clothes.',
     tech: ['Campaign page', 'Responsive'],
     figures: [
       {
