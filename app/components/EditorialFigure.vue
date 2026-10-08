@@ -164,7 +164,7 @@ export default defineNuxtComponent({
   position: relative;
   overflow: hidden;
   width: 100%;
-  filter: grayscale(1);
+  filter: grayscale(1) brightness(var(--img-brightness));
   background: var(--tone);
   transition: filter .8s var(--ease-out);
 }
@@ -172,7 +172,7 @@ export default defineNuxtComponent({
 .fig:hover .frame,
 .fig.is-centered .frame,
 .frame.is-colour {
-  filter: grayscale(0);
+  filter: grayscale(0) brightness(var(--img-brightness));
 }
 
 .tone-1 { --tone: var(--c-tone-1); }

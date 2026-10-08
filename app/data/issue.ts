@@ -75,6 +75,7 @@ export const masthead = {
   name: 'PIM WILLEMS',
   issue: 'The Build Issue — No. 01',
   skipLink: 'Skip to work',
+  themeToggle: 'Dark mode',
 }
 
 export const cover = {

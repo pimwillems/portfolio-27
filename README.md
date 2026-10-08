@@ -62,4 +62,8 @@ app/
 modules/font-preload.ts   preloads both Bodoni Moda faces (upright + italic)
 ```
 
+### Dark mode
+
+`tokens.css` defines a dark palette that applies when the OS prefers dark, or when the reader picks it with the switch in the masthead. The choice is saved in `localStorage` (`theme`). A small blocking script in `<head>` (`app/utils/theme.ts`) sets `<html data-theme>` before first paint, so the page never flashes the wrong theme. Without JS the OS preference applies and the switch is hidden. Use colour tokens (`--c-*`) only; never hard-code colours.
+
 Motion is CSS only: load animations on first paint, and scroll-driven animations (`animation-timeline`) where supported. Browsers without scroll timelines get the `v-reveal` IntersectionObserver fallback; `prefers-reduced-motion` shows everything in its final state.
