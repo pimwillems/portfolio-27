@@ -203,7 +203,7 @@ export const projects: Project[] = [
     category: 'EURO2020 experience',
     dek: 'Pick your dream team.',
     body:
-      'A EURO2020 game where fans built their own artist roster. Every pick played a Spotify preview, so you heard your team while you chose it.',
+      'A EURO2020 game where fans built their own artist roster and share it via social media. Working with the Spotify API, the most played artists for every user were loaded first.',
     tech: ['Vue.js', 'Spotify API', 'Localization'],
     figures: [
       {
