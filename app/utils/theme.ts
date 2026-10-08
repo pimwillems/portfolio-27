@@ -6,7 +6,7 @@ const THEME_META_ID = 'theme-color'
 /** Browser chrome colour per theme; mirrors --c-paper in tokens.css. */
 export const THEME_COLORS: Record<Theme, string> = {
   light: '#FFFFFF',
-  dark: '#111111',
+  dark: '#16181D',
 }
 
 /**

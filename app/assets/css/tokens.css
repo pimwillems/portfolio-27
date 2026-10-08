@@ -29,19 +29,21 @@
 }
 
 /* ---------- dark theme ----------
-   Off-black paper and off-white ink rather than pure #000/#FFF: less halation
-   on bright text and room for the tones to read as layers. Applied when the OS
-   prefers dark (and the reader hasn't picked light), or when they pick dark.
+   No pure #000/#FFF: a deep blue-slate paper with warm cream ink (13.9:1)
+   avoids halation and glare, and the tinted greys keep some colour in the
+   page instead of flat neutral grey. Tones step up in the same slate hue.
+   Applied when the OS prefers dark (and the reader hasn't picked light), or
+   when they pick dark.
    The two selectors are duplicated on purpose: the media query is the no-JS
    fallback, [data-theme] is the reader's explicit choice. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --c-paper: #111111;
-    --c-ink: #EDEDED;
-    --c-muted: #9C9C9C;       /* 6.9:1 on #111, AA */
-    --c-line: #EDEDED;
-    --c-tone-1: #1C1C1C; --c-tone-2: #262626; --c-tone-3: #383838;
-    --c-tone-4: #5C5C5C; --c-tone-5: #BDBDBD; --c-tone-6: #DEDEDE;
+    --c-paper: #16181D;
+    --c-ink: #E8E3D9;
+    --c-muted: #A29C92;       /* 6.5:1 on paper, AA */
+    --c-line: #E8E3D9;
+    --c-tone-1: #1E2027; --c-tone-2: #272A32; --c-tone-3: #353943;
+    --c-tone-4: #555A66; --c-tone-5: #B8B2A7; --c-tone-6: #D9D3C8;
     --img-brightness: .88;
 
     color-scheme: dark;
@@ -49,12 +51,12 @@
 }
 
 :root[data-theme="dark"] {
-  --c-paper: #111111;
-  --c-ink: #EDEDED;
-  --c-muted: #9C9C9C;
-  --c-line: #EDEDED;
-  --c-tone-1: #1C1C1C; --c-tone-2: #262626; --c-tone-3: #383838;
-  --c-tone-4: #5C5C5C; --c-tone-5: #BDBDBD; --c-tone-6: #DEDEDE;
+  --c-paper: #16181D;
+  --c-ink: #E8E3D9;
+  --c-muted: #A29C92;
+  --c-line: #E8E3D9;
+  --c-tone-1: #1E2027; --c-tone-2: #272A32; --c-tone-3: #353943;
+  --c-tone-4: #555A66; --c-tone-5: #B8B2A7; --c-tone-6: #D9D3C8;
   --img-brightness: .88;
 
   color-scheme: dark;
